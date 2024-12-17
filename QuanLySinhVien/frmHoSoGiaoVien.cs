@@ -94,7 +94,7 @@ namespace AZJ
             txtMaGV.Text = qlsvDataSet.GIANGVIEN.Rows[0]["MaGV"].ToString();
             txtHoTen.Text = qlsvDataSet.GIANGVIEN.Rows[0]["HoTen"].ToString();
             dtpNgaySinh.Text = qlsvDataSet.GIANGVIEN.Rows[0]["NgaySinh"].ToString();
-            cboGioiTinh.Text = qlsvDataSet.GIANGVIEN.Rows[0]["GioiTinh"].ToString();
+            cboGioiTinh.SelectedIndex = qlsvDataSet.GIANGVIEN.Rows[0]["GioiTinh"].ToString() == "Nam" ? 0 : 1;
             txtDiaChi.Text = qlsvDataSet.GIANGVIEN.Rows[0]["DiaChi"].ToString();
             txtEmail.Text = qlsvDataSet.GIANGVIEN.Rows[0]["Email"].ToString();
             txtSDT.Text = qlsvDataSet.GIANGVIEN.Rows[0]["SDT"].ToString();
