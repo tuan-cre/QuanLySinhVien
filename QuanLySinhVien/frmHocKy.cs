@@ -22,7 +22,7 @@ namespace AZJ
         {
             if (dgvHocKy.CurrentRow != null)
             {
-                txtMaHK.Text = dgvHocKy.CurrentRow.Cells["MaHK"].Value.ToString();
+                txtMaHK.Text = dgvHocKy.CurrentRow.Cells["MaHK"].Value.ToString().Trim();
                 txtTenHK.Text = dgvHocKy.CurrentRow.Cells["TenHK"].Value.ToString();
                 txtNamHoc.Text = dgvHocKy.CurrentRow.Cells["NamHoc"].Value.ToString();
                 dtpNgayBD.Value = DateTime.Parse(dgvHocKy.CurrentRow.Cells["NgayBD"].Value.ToString());
