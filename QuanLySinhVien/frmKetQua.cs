@@ -1,13 +1,7 @@
-﻿using AZJ.QLSVDataSetTableAdapters;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AZJ
@@ -70,7 +64,7 @@ namespace AZJ
                 txtSoTinChiDat.Text = dgvKetqua.CurrentRow.Cells["SoTinChiDat"].Value.ToString();
                 txtDiemTB.Text = dgvKetqua.CurrentRow.Cells["DiemTB"].Value.ToString();
                 txtXepLoai.Text = dgvKetqua.CurrentRow.Cells["XepLoai"].Value.ToString();
-            }    
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -90,7 +84,6 @@ namespace AZJ
 
                 double dtb = Convert.ToDouble(diemTB);
 
-                //Xeploai: yeu < 5, trung binh 5-6.5, kha 6.5-8, gioi 8-9, xuat sac 9-10
                 if (dtb < 5)
                 {
                     newRow["XepLoai"] = "Yếu";
@@ -115,7 +108,7 @@ namespace AZJ
                 int stcd = Convert.ToInt32(soTinChiDat);
 
                 newRow["TrangThai"] = stcd < 15 ? "Đang Học" : "Đã Hoàn Thành";
-                //newRow["XepLoai"] = txtXepLoai.Text;
+
                 qlsvDataSet.KETQUA.Rows.Add(newRow);
                 dgvKetqua.Refresh();
                 btnLuu.Enabled = true;

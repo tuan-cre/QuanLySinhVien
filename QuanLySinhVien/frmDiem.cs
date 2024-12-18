@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AZJ
@@ -156,7 +151,7 @@ namespace AZJ
                         double dtk = (float.Parse(txtDiemGiuaKy.Text) * 0.4 + float.Parse(txtDiemCuoiKy.Text) * 0.6);
                         rowToEdit["TrangThai"] = dtk >= 5 ? "Đạt" : "Không đạt";
                     }
-                }    
+                }
 
                 dgvDiem.Refresh();
                 btnLuu.Enabled = true;

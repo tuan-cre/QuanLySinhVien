@@ -35,6 +35,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtMaKhoa = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.cboGioiTinh = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtMaGV = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
@@ -52,8 +54,6 @@
             this.qlsvDataSet = new AZJ.QLSVDataSet();
             this.giangvienTableAdapter = new AZJ.QLSVDataSetTableAdapters.GIANGVIENTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
-            this.cboGioiTinh = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qlsvDataSet)).BeginInit();
@@ -71,6 +71,7 @@
             this.btnHuy.TabIndex = 15;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnHuy.Visible = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnLuu
@@ -84,6 +85,7 @@
             this.btnLuu.TabIndex = 14;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Visible = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnSua
@@ -151,6 +153,28 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin";
+            // 
+            // dtpNgaySinh
+            // 
+            this.dtpNgaySinh.Enabled = false;
+            this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaySinh.Location = new System.Drawing.Point(288, 145);
+            this.dtpNgaySinh.Name = "dtpNgaySinh";
+            this.dtpNgaySinh.Size = new System.Drawing.Size(249, 26);
+            this.dtpNgaySinh.TabIndex = 24;
+            // 
+            // cboGioiTinh
+            // 
+            this.cboGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGioiTinh.Enabled = false;
+            this.cboGioiTinh.FormattingEnabled = true;
+            this.cboGioiTinh.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
+            this.cboGioiTinh.Location = new System.Drawing.Point(288, 96);
+            this.cboGioiTinh.Name = "cboGioiTinh";
+            this.cboGioiTinh.Size = new System.Drawing.Size(250, 26);
+            this.cboGioiTinh.TabIndex = 23;
             // 
             // label7
             // 
@@ -315,28 +339,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
-            // 
-            // dtpNgaySinh
-            // 
-            this.dtpNgaySinh.Enabled = false;
-            this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgaySinh.Location = new System.Drawing.Point(288, 145);
-            this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(249, 26);
-            this.dtpNgaySinh.TabIndex = 24;
-            // 
-            // cboGioiTinh
-            // 
-            this.cboGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboGioiTinh.Enabled = false;
-            this.cboGioiTinh.FormattingEnabled = true;
-            this.cboGioiTinh.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
-            this.cboGioiTinh.Location = new System.Drawing.Point(288, 96);
-            this.cboGioiTinh.Name = "cboGioiTinh";
-            this.cboGioiTinh.Size = new System.Drawing.Size(250, 26);
-            this.cboGioiTinh.TabIndex = 23;
             // 
             // frmHoSoGiaoVien
             // 

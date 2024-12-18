@@ -85,7 +85,6 @@
             this.cboTrangThai = new System.Windows.Forms.ComboBox();
             this.khoaTableAdapter = new AZJ.QLSVDataSetTableAdapters.KHOATableAdapter();
             this.giangvienTableAdapter = new AZJ.QLSVDataSetTableAdapters.GIANGVIENTableAdapter();
-            this.temp = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sinhvienBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qlsvDataSet)).BeginInit();
@@ -653,20 +652,12 @@
             // 
             this.giangvienTableAdapter.ClearBeforeFill = true;
             // 
-            // temp
-            // 
-            this.temp.Location = new System.Drawing.Point(790, 625);
-            this.temp.Name = "temp";
-            this.temp.Size = new System.Drawing.Size(100, 22);
-            this.temp.TabIndex = 69;
-            // 
             // frmSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1012, 703);
-            this.Controls.Add(this.temp);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.gboFillter);
             this.Controls.Add(this.btnLamMoi);
@@ -765,6 +756,5 @@
         private System.Windows.Forms.ComboBox cboTrangThai;
         private QLSVDataSetTableAdapters.KHOATableAdapter khoaTableAdapter;
         private QLSVDataSetTableAdapters.GIANGVIENTableAdapter giangvienTableAdapter;
-        private System.Windows.Forms.TextBox temp;
     }
 }

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AZJ
@@ -82,14 +77,12 @@ namespace AZJ
         {
             if (dgvHocKy.CurrentRow != null)
             {
-                // Lấy DataRow hiện tại dựa trên DataBoundItem
                 DataRowView rowView = dgvHocKy.CurrentRow.DataBoundItem as DataRowView;
                 if (rowView != null)
                 {
                     DataRow rowToDelete = rowView.Row;
-                    rowToDelete.Delete(); // Đánh dấu dòng này để xóa
+                    rowToDelete.Delete();
                 }
-                // Làm mới hiển thị của DataGridView
                 dgvHocKy.Refresh();
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;

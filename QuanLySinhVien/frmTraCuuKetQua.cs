@@ -32,11 +32,9 @@ namespace AZJ
                 this.ketquaTableAdapter.FillBy2B(this.qlsvDataSet.KETQUA, MaNguoiDung);
                 if (this.qlsvDataSet.KETQUA.Rows.Count > 0)
                 {
-                    // Tạo một bản sao của dòng đầu tiên
-                    DataTable firstRowTable = this.qlsvDataSet.KETQUA.Clone(); // Sao chép cấu trúc bảng
-                    firstRowTable.ImportRow(this.qlsvDataSet.KETQUA.Rows[0]);  // Thêm dòng đầu tiên
+                    DataTable firstRowTable = this.qlsvDataSet.KETQUA.Clone(); 
+                    firstRowTable.ImportRow(this.qlsvDataSet.KETQUA.Rows[0]);  
 
-                    // Gán DataSource cho DataGridView
                     dgvTraCuuKQ.DataSource = firstRowTable;
                 }
                 else
@@ -47,14 +45,12 @@ namespace AZJ
             else
             {
                 this.ketquaTableAdapter.FillBy2BTenHK(this.qlsvDataSet.KETQUA, MaNguoiDung, cboFillterHocKy.Text);
-                // Kiểm tra nếu có dữ liệu
+
                 if (this.qlsvDataSet.KETQUA.Rows.Count > 0)
                 {
-                    // Tạo một bản sao của dòng đầu tiên
-                    DataTable firstRowTable = this.qlsvDataSet.KETQUA.Clone(); // Sao chép cấu trúc bảng
-                    firstRowTable.ImportRow(this.qlsvDataSet.KETQUA.Rows[0]);  // Thêm dòng đầu tiên
+                    DataTable firstRowTable = this.qlsvDataSet.KETQUA.Clone(); 
+                    firstRowTable.ImportRow(this.qlsvDataSet.KETQUA.Rows[0]);
 
-                    // Gán DataSource cho DataGridView
                     dgvTraCuuKQ.DataSource = firstRowTable;
                 }
                 else
@@ -81,14 +77,11 @@ namespace AZJ
 
             this.ketquaTableAdapter.FillBy2B(this.qlsvDataSet.KETQUA, MaNguoiDung);
 
-            // Kiểm tra nếu có dữ liệu
             if (this.qlsvDataSet.KETQUA.Rows.Count > 0)
             {
-                // Tạo một bản sao của dòng đầu tiên
-                DataTable firstRowTable = this.qlsvDataSet.KETQUA.Clone(); // Sao chép cấu trúc bảng
-                firstRowTable.ImportRow(this.qlsvDataSet.KETQUA.Rows[0]);  // Thêm dòng đầu tiên
+                DataTable firstRowTable = this.qlsvDataSet.KETQUA.Clone(); 
+                firstRowTable.ImportRow(this.qlsvDataSet.KETQUA.Rows[0]);  
 
-                // Gán DataSource cho DataGridView
                 dgvTraCuuKQ.DataSource = firstRowTable;
             }
             else

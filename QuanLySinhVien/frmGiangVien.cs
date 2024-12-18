@@ -1,13 +1,7 @@
-﻿using AZJ.QLSVDataSetTableAdapters;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AZJ
@@ -61,192 +55,23 @@ namespace AZJ
         {
             if (dgvGiangVien.CurrentRow != null)
             {
-                // Lấy DataRow hiện tại dựa trên DataBoundItem
                 DataRowView rowView = dgvGiangVien.CurrentRow.DataBoundItem as DataRowView;
                 if (rowView != null)
                 {
                     DataRow row = rowView.Row;
-                    // Hiển thị thông tin từ DataRow lên các TextBox
                     txtMaGV.Text = row["MaGV"].ToString().Trim();
                     txtHoTen.Text = row["HoTen"].ToString();
                     dtpNgaySinh.Value = DateTime.Parse(row["NgaySinh"].ToString());
-                    //txtNgaySinh.Text = DateTime.Parse(row["NgaySinh"].ToString()).ToString("MM/dd/yyyy");
-                    //txtGioiTinh.Text = row["GioiTinh"].ToString();
                     cboGioiTinh.SelectedIndex = row["GioiTinh"].ToString() == "Nam" ? 0 : 1;
                     txtDiaChi.Text = row["DiaChi"].ToString();
                     txtEmail.Text = row["Email"].ToString();
                     txtSDT.Text = row["SDT"].ToString();
-                    //txtTrangThai.Text = row["TrangThai"].ToString();
                     txtMaKhoa.Text = row["MaKhoa"].ToString().Trim();
                     txtMaBM.Text = row["MaBM"].ToString().Trim();
                 }
             }
         }
 
-        //private void btnThem_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        // Tạo một dòng mới trong DataTable
-        //        DataRow newRow = qlsvDataSet.SINHVIEN.NewRow();
-        //        newRow["MaSV"] = txtMaSV.Text;
-        //        newRow["HoTen"] = txtHoTen.Text;
-        //        //newRow["NgaySinh"] = DateTime.Parse(txtNgaySinh.Text);
-        //        newRow["NgaySinh"] = DateTime.Parse(dtpNgaySinh.Text);
-        //        //newRow["GioiTinh"] = txtGioiTinh.Text;
-        //        newRow["GioiTinh"] = cboGioiTinh.SelectedItem.ToString();
-        //        newRow["DiaChi"] = txtDiaChi.Text;
-        //        newRow["Email"] = txtEmail.Text;
-        //        newRow["SDT"] = txtSDT.Text;
-        //        //newRow["TrangThai"] = txtTrangThai.Text;
-        //        newRow["TrangThai"] = cboTrangThai.SelectedItem.ToString();
-        //        newRow["MaLop"] = txtMaLop.Text;
-        //        newRow["MaKhoa"] = txtMaKhoa.Text;
-
-        //        // Thêm dòng vào DataTable
-        //        qlsvDataSet.SINHVIEN.Rows.Add(newRow);
-        //        dgvSinhVien.Refresh();
-        //        btnLuu.Enabled = true;
-        //        btnHuy.Enabled = true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Đã xảy ra lỗi khi thêm sinh viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
-        //private void btnXoa_Click(object sender, EventArgs e)
-        //{
-        //    if (dgvSinhVien.CurrentRow != null)
-        //    {
-        //        // Lấy DataRow hiện tại dựa trên DataBoundItem
-        //        DataRowView rowView = dgvSinhVien.CurrentRow.DataBoundItem as DataRowView;
-        //        if (rowView != null)
-        //        {
-        //            DataRow rowToDelete = rowView.Row;
-        //            rowToDelete.Delete(); // Đánh dấu dòng này để xóa
-        //        }
-
-        //        // Làm mới hiển thị của DataGridView
-        //        dgvSinhVien.Refresh();
-        //        btnLuu.Enabled = true;
-        //        btnHuy.Enabled = true;
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Vui lòng chọn sinh viên để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-
-
-        //private void btnSua_Click(object sender, EventArgs e)
-        //{
-        //    if (dgvSinhVien.CurrentRow != null)
-        //    {
-        //        // Lấy DataRow hiện tại dựa trên DataBoundItem
-        //        DataRowView rowView = dgvSinhVien.CurrentRow.DataBoundItem as DataRowView;
-        //        if (rowView != null)
-        //        {
-        //            DataRow rowToEdit = rowView.Row;
-
-        //            // Cập nhật giá trị trong DataRow từ các TextBox
-        //            rowToEdit["HoTen"] = txtHoTen.Text;
-        //            //rowToEdit["NgaySinh"] = DateTime.Parse(txtNgaySinh.Text);
-        //            rowToEdit["NgaySinh"] = DateTime.Parse(dtpNgaySinh.Text);
-        //            //rowToEdit["GioiTinh"] = txtGioiTinh.Text;
-        //            rowToEdit["GioiTinh"] = cboGioiTinh.SelectedItem.ToString();
-        //            rowToEdit["DiaChi"] = txtDiaChi.Text;
-        //            rowToEdit["Email"] = txtEmail.Text;
-        //            rowToEdit["SDT"] = txtSDT.Text;
-        //            //rowToEdit["TrangThai"] = txtTrangThai.Text;
-        //            rowToEdit["TrangThai"] = cboTrangThai.SelectedItem.ToString();
-        //            rowToEdit["MaLop"] = txtMaLop.Text;
-        //            rowToEdit["MaKhoa"] = txtMaKhoa.Text;
-
-        //            // Làm mới hiển thị của DataGridView
-        //            dgvSinhVien.Refresh();
-        //            btnLuu.Enabled = true;
-        //            btnHuy.Enabled = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Vui lòng chọn sinh viên để sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-
-        //private void btnLuu_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        sinhvienTableAdapter.Update(qlsvDataSet.SINHVIEN);
-        //        qlsvDataSet.AcceptChanges();
-        //        MessageBox.Show("Lưu thay đổi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        btnLuu.Enabled = false;
-        //        btnHuy.Enabled = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Đã xảy ra lỗi khi lưu thay đổi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
-        //private void btnHuy_Click(object sender, EventArgs e)
-        //{
-        //    qlsvDataSet.SINHVIEN.RejectChanges();
-        //    dgvSinhVien.Refresh();
-        //    MessageBox.Show("Đã hủy các thay đổi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    btnLuu.Enabled = false;
-        //    btnHuy.Enabled = false;
-        //}
-
-
-        //private void dgvSinhVien_SelectionChanged(object sender, EventArgs e)
-        //{
-        //    if (dgvSinhVien.CurrentRow != null)
-        //    {
-        //        // Lấy DataRow hiện tại dựa trên DataBoundItem
-        //        DataRowView rowView = dgvSinhVien.CurrentRow.DataBoundItem as DataRowView;
-        //        if (rowView != null)
-        //        {
-        //            DataRow row = rowView.Row;
-        //            // Hiển thị thông tin từ DataRow lên các TextBox
-        //            txtMaSV.Text = row["MaSV"].ToString().Trim();
-        //            txtHoTen.Text = row["HoTen"].ToString();
-        //            dtpNgaySinh.Value = DateTime.Parse(row["NgaySinh"].ToString());
-        //            //txtNgaySinh.Text = DateTime.Parse(row["NgaySinh"].ToString()).ToString("MM/dd/yyyy");
-        //            //txtGioiTinh.Text = row["GioiTinh"].ToString();
-        //            cboGioiTinh.SelectedIndex = row["GioiTinh"].ToString() == "Nam" ? 0 : 1;
-        //            txtDiaChi.Text = row["DiaChi"].ToString();
-        //            txtEmail.Text = row["Email"].ToString();
-        //            txtSDT.Text = row["SDT"].ToString();
-        //            //txtTrangThai.Text = row["TrangThai"].ToString();
-        //            cboTrangThai.SelectedIndex = row["TrangThai"].ToString() == "đang học" ? 0 : row["TrangThai"].ToString() == "thôi học" ? 1 : 2;
-        //            txtMaLop.Text = row["MaLop"].ToString().Trim();
-        //            txtMaKhoa.Text = row["MaKhoa"].ToString().Trim();
-        //        }
-        //    }
-        //}
-
-
-        //private void btnLamMoi_Click(object sender, EventArgs e)
-        //{
-        //    dgvSinhVien.ClearSelection();
-        //    dgvSinhVien.Refresh();
-        //    txtMaSV.Text = "";
-        //    txtHoTen.Text = "";
-        //    dtpNgaySinh.Value = DateTime.Now;
-        //    //txtNgaySinh.Text = "";
-        //    //txtGioiTinh.Text = "";
-        //    cboGioiTinh.SelectedIndex = 0;
-        //    txtDiaChi.Text = "";
-        //    txtEmail.Text = "";
-        //    txtSDT.Text = "";
-        //    //txtTrangThai.Text = "";
-        //    cboTrangThai.SelectedIndex = 0;
-        //    txtMaLop.Text = "";
-        //    txtMaKhoa.Text = "";
-        //}
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);

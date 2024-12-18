@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AZJ
@@ -86,7 +79,7 @@ namespace AZJ
             {
                 taikhoanTableAdapter.UpdateMatKhau(txtMatKhauMoi.Text, TenDangNhap);
                 MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }    
+            }
             gbDoiMatKhau.Visible = false;
             if (LoaiTaiKhoan == "SV")
                 this.taikhoanTableAdapter.FillByMaSV(this.qlsvDataSet.TAIKHOAN, MaNguoiDung);

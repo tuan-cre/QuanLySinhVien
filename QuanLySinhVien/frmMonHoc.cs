@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AZJ
@@ -54,7 +49,7 @@ namespace AZJ
             else
             {
                 this.monhocTableAdapter.Fill(this.qlsvDataSet.MONHOC);
-            }   
+            }
         }
 
         private void txtFillterMonHoc_TextChanged(object sender, EventArgs e)
@@ -94,7 +89,6 @@ namespace AZJ
         {
             if (dgvMonHoc.CurrentRow != null)
             {
-                // Lấy DataRow hiện tại dựa trên DataBoundItem
                 DataRowView rowView = dgvMonHoc.CurrentRow.DataBoundItem as DataRowView;
                 if (rowView != null)
                 {
@@ -104,7 +98,6 @@ namespace AZJ
                     row["STC"] = txtSTC.Text;
                     row["MaBM"] = txtMaBM.Text;
                 }
-                // Làm mới hiển thị của DataGridView
                 dgvMonHoc.Refresh();
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
@@ -119,14 +112,12 @@ namespace AZJ
         {
             if (dgvMonHoc.CurrentRow != null)
             {
-                // Lấy DataRow hiện tại dựa trên DataBoundItem
                 DataRowView rowView = dgvMonHoc.CurrentRow.DataBoundItem as DataRowView;
                 if (rowView != null)
                 {
                     DataRow rowToDelete = rowView.Row;
-                    rowToDelete.Delete(); // Đánh dấu dòng này để xóa
+                    rowToDelete.Delete();
                 }
-                // Làm mới hiển thị của DataGridView
                 dgvMonHoc.Refresh();
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;

@@ -1,14 +1,8 @@
 ﻿using AZJ.QLSVDataSetTableAdapters;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AZJ
@@ -25,7 +19,6 @@ namespace AZJ
         {
             InitializeComponent();
             this.MaNguoiDung = MaNguoiDung;
-            this.temp.Text = MaNguoiDung;
         }
 
         private void SinhVienForm_Load(object sender, EventArgs e)
@@ -61,7 +54,7 @@ namespace AZJ
                 cboFillterKhoa.ValueMember = "MaKhoa";
                 cboFillterKhoa.SelectedIndex = 0;
                 this.sinhvienTableAdapter.Fill(this.qlsvDataSet.SINHVIEN);
-            } 
+            }
         }
 
         private void cboFillterKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,18 +116,14 @@ namespace AZJ
         {
             try
             {
-                // Tạo một dòng mới trong DataTable
                 DataRow newRow = qlsvDataSet.SINHVIEN.NewRow();
                 newRow["MaSV"] = txtMaSV.Text;
                 newRow["HoTen"] = txtHoTen.Text;
-                //newRow["NgaySinh"] = DateTime.Parse(txtNgaySinh.Text);
                 newRow["NgaySinh"] = DateTime.Parse(dtpNgaySinh.Text);
-                //newRow["GioiTinh"] = txtGioiTinh.Text;
                 newRow["GioiTinh"] = cboGioiTinh.SelectedItem.ToString();
                 newRow["DiaChi"] = txtDiaChi.Text;
                 newRow["Email"] = txtEmail.Text;
                 newRow["SDT"] = txtSDT.Text;
-                //newRow["TrangThai"] = txtTrangThai.Text;
                 newRow["TrangThai"] = cboTrangThai.SelectedItem.ToString();
 
                 if (MaNguoiDung != null)
@@ -147,10 +136,7 @@ namespace AZJ
                     newRow["MaKhoa"] = txtMaKhoa.Text;
                     newRow["MaLop"] = txtMaLop.Text;
                 }
-                //newRow["MaLop"] = txtMaLop.Text;
-                //newRow["MaKhoa"] = txtMaKhoa.Text;
 
-                // Thêm dòng vào DataTable
                 qlsvDataSet.SINHVIEN.Rows.Add(newRow);
                 dgvSinhVien.Refresh();
                 btnLuu.Enabled = true;
@@ -166,15 +152,12 @@ namespace AZJ
         {
             if (dgvSinhVien.CurrentRow != null)
             {
-                // Lấy DataRow hiện tại dựa trên DataBoundItem
                 DataRowView rowView = dgvSinhVien.CurrentRow.DataBoundItem as DataRowView;
                 if (rowView != null)
                 {
                     DataRow rowToDelete = rowView.Row;
-                    rowToDelete.Delete(); // Đánh dấu dòng này để xóa
+                    rowToDelete.Delete();
                 }
-
-                // Làm mới hiển thị của DataGridView
                 dgvSinhVien.Refresh();
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
@@ -190,22 +173,16 @@ namespace AZJ
         {
             if (dgvSinhVien.CurrentRow != null)
             {
-                // Lấy DataRow hiện tại dựa trên DataBoundItem
                 DataRowView rowView = dgvSinhVien.CurrentRow.DataBoundItem as DataRowView;
                 if (rowView != null)
                 {
                     DataRow rowToEdit = rowView.Row;
-
-                    // Cập nhật giá trị trong DataRow từ các TextBox
                     rowToEdit["HoTen"] = txtHoTen.Text;
-                    //rowToEdit["NgaySinh"] = DateTime.Parse(txtNgaySinh.Text);
                     rowToEdit["NgaySinh"] = DateTime.Parse(dtpNgaySinh.Text);
-                    //rowToEdit["GioiTinh"] = txtGioiTinh.Text;
                     rowToEdit["GioiTinh"] = cboGioiTinh.SelectedItem.ToString();
                     rowToEdit["DiaChi"] = txtDiaChi.Text;
                     rowToEdit["Email"] = txtEmail.Text;
                     rowToEdit["SDT"] = txtSDT.Text;
-                    //rowToEdit["TrangThai"] = txtTrangThai.Text;
                     rowToEdit["TrangThai"] = cboTrangThai.SelectedItem.ToString();
                     if (MaNguoiDung != null)
                     {
@@ -217,10 +194,7 @@ namespace AZJ
                         rowToEdit["MaKhoa"] = txtMaKhoa.Text;
                         rowToEdit["MaLop"] = txtMaLop.Text;
                     }
-                    //rowToEdit["MaLop"] = txtMaLop.Text;
-                    //rowToEdit["MaKhoa"] = txtMaKhoa.Text;
 
-                    // Làm mới hiển thị của DataGridView
                     dgvSinhVien.Refresh();
                     btnLuu.Enabled = true;
                     btnHuy.Enabled = true;
@@ -262,22 +236,17 @@ namespace AZJ
         {
             if (dgvSinhVien.CurrentRow != null)
             {
-                // Lấy DataRow hiện tại dựa trên DataBoundItem
                 DataRowView rowView = dgvSinhVien.CurrentRow.DataBoundItem as DataRowView;
                 if (rowView != null)
                 {
                     DataRow row = rowView.Row;
-                    // Hiển thị thông tin từ DataRow lên các TextBox
                     txtMaSV.Text = row["MaSV"].ToString().Trim();
                     txtHoTen.Text = row["HoTen"].ToString();
                     dtpNgaySinh.Value = DateTime.Parse(row["NgaySinh"].ToString());
-                    //txtNgaySinh.Text = DateTime.Parse(row["NgaySinh"].ToString()).ToString("MM/dd/yyyy");
-                    //txtGioiTinh.Text = row["GioiTinh"].ToString();
                     cboGioiTinh.SelectedIndex = row["GioiTinh"].ToString() == "Nam" ? 0 : 1;
                     txtDiaChi.Text = row["DiaChi"].ToString();
                     txtEmail.Text = row["Email"].ToString();
                     txtSDT.Text = row["SDT"].ToString();
-                    //txtTrangThai.Text = row["TrangThai"].ToString();
                     cboTrangThai.SelectedIndex = row["TrangThai"].ToString() == "đang học" ? 0 : row["TrangThai"].ToString() == "thôi học" ? 1 : 2;
                     txtMaLop.Text = row["MaLop"].ToString().Trim();
                     txtMaKhoa.Text = row["MaKhoa"].ToString().Trim();
@@ -305,13 +274,10 @@ namespace AZJ
             txtMaSV.Text = "";
             txtHoTen.Text = "";
             dtpNgaySinh.Value = DateTime.Now;
-            //txtNgaySinh.Text = "";
-            //txtGioiTinh.Text = "";
             cboGioiTinh.SelectedIndex = 0;
             txtDiaChi.Text = "";
             txtEmail.Text = "";
             txtSDT.Text = "";
-            //txtTrangThai.Text = "";
             cboTrangThai.SelectedIndex = 0;
             if (MaNguoiDung != null)
             {
@@ -323,8 +289,6 @@ namespace AZJ
                 txtMaKhoa.Text = "";
                 txtMaLop.Text = "";
             }
-            //txtMaLop.Text = "";
-            //txtMaKhoa.Text = "";
         }
     }
 }

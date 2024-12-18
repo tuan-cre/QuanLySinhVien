@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AZJ
@@ -36,17 +30,15 @@ namespace AZJ
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (LoaiTaiKhoan=="SV")
+            if (LoaiTaiKhoan == "SV")
             {
-                //OpenFormInPanel(new frmHoSoSinhVien(MaNguoiDung));
                 OpenFormInPanel(new frmHome());
                 mnuQuanLy.Visible = false;
                 lblChucVu.Text = "Sinh Viên";
                 picAvatar.Image = Properties.Resources.stdava;
-            }    
+            }
             else if (LoaiTaiKhoan == "GV")
             {
-                //OpenFormInPanel(new frmHoSoGiaoVien(MaNguoiDung));
                 OpenFormInPanel(new frmHome());
                 mnuTaiKhoan.Visible = false;
                 mnuGiangVien.Visible = false;
@@ -62,13 +54,12 @@ namespace AZJ
             }
             else
             {
-                //OpenFormInPanel(new frmHoSoGiaoVien(MaNguoiDung));
                 OpenFormInPanel(new frmHome());
                 mnuTraCuu.Visible = false;
                 lblChucVu.Text = "Quản Trị Viên";
                 picAvatar.Image = Properties.Resources.admava;
             }
-            
+
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
