@@ -6721,13 +6721,13 @@ SELECT MaSV, HoTen, NgaySinh, GioiTinh, DiaChi, Email, SDT, TrangThai, MaLop, Ma
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT * \nFROM SINHVIEN\r\n\nWHERE LOWER(RTRIM(HoTen)) LIKE \'%\' + LOWER(@HoTen) + \'%" +
-                "\'";
+            this._commandCollection[2].CommandText = "SELECT * \nFROM SINHVIEN\n\nWHERE LOWER(RTRIM(HoTen)) LIKE \'%\' + LOWER(@HoTen) + \'%\'" +
+                "";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT * FROM SINHVIEN WHERE MaKhoa = @MaKhoa AND MaLop =@MaLop\r\n";
+            this._commandCollection[3].CommandText = "SELECT * FROM SINHVIEN WHERE MaKhoa = @MaKhoa AND MaLop =@MaLop\n";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaLop", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6763,10 +6763,9 @@ SELECT MaSV, HoTen, NgaySinh, GioiTinh, DiaChi, Email, SDT, TrangThai, MaLop, Ma
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[9].Connection = this.Connection;
-            this._commandCollection[9].CommandText = "UPDATE SINHVIEN\r\nSET HoTen = @HoTen,\r\n    NgaySinh = @NgaySinh,\r\n    GioiTinh = @" +
-                "GioiTinh,\r\n    DiaChi = @DiaChi,\r\n    Email = @Email,\r\n    SDT = @SDT,\r\n    Tran" +
-                "gThai = @TrangThai,\r\n    MaLop = @MaLop,\r\n    MaKhoa = @MaKhoa\r\nWHERE MaSV = @Ma" +
-                "SV;";
+            this._commandCollection[9].CommandText = "UPDATE SINHVIEN\nSET HoTen = @HoTen,\n    NgaySinh = @NgaySinh,\n    GioiTinh = @Gio" +
+                "iTinh,\n    DiaChi = @DiaChi,\n    Email = @Email,\n    SDT = @SDT,\n    TrangThai =" +
+                " @TrangThai,\n    MaLop = @MaLop,\n    MaKhoa = @MaKhoa\nWHERE MaSV = @MaSV;";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "HoTen", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NgaySinh", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "NgaySinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7850,9 +7849,8 @@ SELECT MaSV, HoTen, NgaySinh, GioiTinh, DiaChi, Email, SDT, TrangThai, MaLop, Ma
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[KHOA] ([MaKhoa], [TenKhoa], [TruongKhoa], [DiaChi], [SDT], [Em" +
-                "ail]) VALUES (@MaKhoa, @TenKhoa, @TruongKhoa, @DiaChi, @SDT, @Email);\r\nSELECT Ma" +
-                "Khoa, TenKhoa, TruongKhoa, DiaChi, SDT, Email FROM KHOA WHERE (MaKhoa = @MaKhoa)" +
-                "";
+                "ail]) VALUES (@MaKhoa, @TenKhoa, @TruongKhoa, @DiaChi, @SDT, @Email);\nSELECT MaK" +
+                "hoa, TenKhoa, TruongKhoa, DiaChi, SDT, Email FROM KHOA WHERE (MaKhoa = @MaKhoa)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenKhoa", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7900,8 +7898,8 @@ SELECT MaKhoa, TenKhoa, TruongKhoa, DiaChi, SDT, Email FROM KHOA WHERE (MaKhoa =
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT KHOA.*\r\n\nFROM KHOA\r\nINNER JOIN GIANGVIEN ON KHOA.MaKhoa = GIANGVIEN.MaKhoa" +
-                "\r\nWHERE MaGV = @MaGV";
+            this._commandCollection[1].CommandText = "SELECT KHOA.*\n\nFROM KHOA\nINNER JOIN GIANGVIEN ON KHOA.MaKhoa = GIANGVIEN.MaKhoa\nW" +
+                "HERE MaGV = @MaGV";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaGV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -8407,8 +8405,8 @@ SELECT MaKhoa, TenKhoa, TruongKhoa, DiaChi, SDT, Email FROM KHOA WHERE (MaKhoa =
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[BOMON] ([MaBM], [TenBM], [TruongBM], [MaKhoa]) VALUES (@MaBM, " +
-                "@TenBM, @TruongBM, @MaKhoa);\r\nSELECT MaBM, TenBM, TruongBM, MaKhoa FROM BOMON WH" +
-                "ERE (MaBM = @MaBM)";
+                "@TenBM, @TruongBM, @MaKhoa);\nSELECT MaBM, TenBM, TruongBM, MaKhoa FROM BOMON WHE" +
+                "RE (MaBM = @MaBM)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBM", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaBM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenBM", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenBM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8955,9 +8953,9 @@ SELECT MaBM, TenBM, TruongBM, MaKhoa FROM BOMON WHERE (MaBM = @MaBM)";
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TAIKHOAN] ([TenDangNhap], [MatKhau], [LoaiTaiKhoan], [MaSV], [" +
-                "MaGV]) VALUES (@TenDangNhap, @MatKhau, @LoaiTaiKhoan, @MaSV, @MaGV);\r\nSELECT Ten" +
-                "DangNhap, MatKhau, LoaiTaiKhoan, MaSV, MaGV FROM TAIKHOAN WHERE (TenDangNhap = @" +
-                "TenDangNhap)";
+                "MaGV]) VALUES (@TenDangNhap, @MatKhau, @LoaiTaiKhoan, @MaSV, @MaGV);\nSELECT TenD" +
+                "angNhap, MatKhau, LoaiTaiKhoan, MaSV, MaGV FROM TAIKHOAN WHERE (TenDangNhap = @T" +
+                "enDangNhap)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenDangNhap", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenDangNhap", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MatKhau", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatKhau", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9015,15 +9013,15 @@ SELECT TenDangNhap, MatKhau, LoaiTaiKhoan, MaSV, MaGV FROM TAIKHOAN WHERE (TenDa
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaGV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT * \nFROM TAIKHOAN\r\n\nWHERE \r\nLOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSo) + \'%" +
-                "\' OR LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaSo) + \'%\' ";
+            this._commandCollection[4].CommandText = "SELECT * \nFROM TAIKHOAN\n\nWHERE \nLOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSo) + \'%\' " +
+                "OR LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaSo) + \'%\' ";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSo", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT * \r\nFROM TAIKHOAN\r\nWHERE \r\n(LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSo) + \'" +
-                "%\' OR LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaSo) + \'%\')\r\nAND LoaiTaiKhoan = @Loa" +
-                "iTaiKhoan";
+            this._commandCollection[5].CommandText = "SELECT * \nFROM TAIKHOAN\nWHERE \n(LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSo) + \'%\' " +
+                "OR LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaSo) + \'%\')\nAND LoaiTaiKhoan = @LoaiTai" +
+                "Khoan";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSo", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoaiTaiKhoan", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "LoaiTaiKhoan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9697,7 +9695,7 @@ SELECT TenDangNhap, MatKhau, LoaiTaiKhoan, MaSV, MaGV FROM TAIKHOAN WHERE (TenDa
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[MONHOC] ([MaMH], [TenMH], [STC], [MaBM]) VALUES (@MaMH, @TenMH" +
-                ", @STC, @MaBM);\r\nSELECT MaMH, TenMH, STC, MaBM FROM MONHOC WHERE (MaMH = @MaMH)";
+                ", @STC, @MaBM);\nSELECT MaMH, TenMH, STC, MaBM FROM MONHOC WHERE (MaMH = @MaMH)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaMH", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenMH", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenMH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10340,13 +10338,13 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenHK", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "TenHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT DIEM.*, MONHOC.TenMH\n\r\nFROM DIEM\r\n\nINNER JOIN MONHOC ON DIEM.MaMH = MONHOC" +
-                ".MaMH";
+            this._commandCollection[5].CommandText = "SELECT DIEM.*, MONHOC.TenMH\n\nFROM DIEM\n\nINNER JOIN MONHOC ON DIEM.MaMH = MONHOC.M" +
+                "aMH";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT DIEM.*, MONHOC.TenMH, HOCKY.TenHK\n\r\nFROM DIEM\r\n\nINNER JOIN MONHOC ON DIEM." +
-                "MaMH = MONHOC.MaMH\r\n\nINNER JOIN HOCKY ON DIEM.MaHK = HOCKY.MaHK";
+            this._commandCollection[6].CommandText = "SELECT DIEM.*, MONHOC.TenMH, HOCKY.TenHK\n\nFROM DIEM\n\nINNER JOIN MONHOC ON DIEM.Ma" +
+                "MH = MONHOC.MaMH\n\nINNER JOIN HOCKY ON DIEM.MaHK = HOCKY.MaHK";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
@@ -11328,8 +11326,8 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[HOCKY] ([MaHK], [TenHK], [NamHoc], [NgayBD], [NgayKT]) VALUES " +
-                "(@MaHK, @TenHK, @NamHoc, @NgayBD, @NgayKT);\r\nSELECT MaHK, TenHK, NamHoc, NgayBD," +
-                " NgayKT FROM HOCKY WHERE (MaHK = @MaHK)";
+                "(@MaHK, @TenHK, @NamHoc, @NgayBD, @NgayKT);\nSELECT MaHK, TenHK, NamHoc, NgayBD, " +
+                "NgayKT FROM HOCKY WHERE (MaHK = @MaHK)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenHK", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11845,8 +11843,8 @@ SELECT MaGV, HoTen, NgaySinh, GioiTinh, DiaChi, SDT, Email, MaKhoa, MaBM FROM GI
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT * FROM GIANGVIEN \r\nWHERE (LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaGV) + \'%\'" +
-                ") AND MaKhoa = @MaKhoa";
+            this._commandCollection[2].CommandText = "SELECT * FROM GIANGVIEN \nWHERE (LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaGV) + \'%\')" +
+                " AND MaKhoa = @MaKhoa";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12659,14 +12657,14 @@ SELECT MaKQ, MaSV, MaHK, SoTinChiDat, DiemTB, XepLoai, TrangThai FROM KETQUA WHE
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT KETQUA.*, HOCKY.TenHK\r\n\nFROM KETQUA\r\nINNER JOIN HOCKY ON KETQUA.MaHK = HOC" +
-                "KY.MaHK\r\nWHERE MaSV = @MaSV";
+            this._commandCollection[1].CommandText = "SELECT KETQUA.*, HOCKY.TenHK\n\nFROM KETQUA\nINNER JOIN HOCKY ON KETQUA.MaHK = HOCKY" +
+                ".MaHK\nWHERE MaSV = @MaSV";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT KETQUA.*, HOCKY.TenHK\r\n\nFROM KETQUA\r\nINNER JOIN HOCKY ON KETQUA.MaHK = HOC" +
-                "KY.MaHK\r\nWHERE KETQUA.MaSV = @MaSV AND HocKY.TenHK = @TenHK";
+            this._commandCollection[2].CommandText = "SELECT KETQUA.*, HOCKY.TenHK\n\nFROM KETQUA\nINNER JOIN HOCKY ON KETQUA.MaHK = HOCKY" +
+                ".MaHK\nWHERE KETQUA.MaSV = @MaSV AND HocKY.TenHK = @TenHK";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenHK", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "TenHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12677,13 +12675,13 @@ SELECT MaKQ, MaSV, MaHK, SoTinChiDat, DiemTB, XepLoai, TrangThai FROM KETQUA WHE
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT * \r\nFROM KETQUA\r\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\'";
+            this._commandCollection[4].CommandText = "SELECT * \nFROM KETQUA\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\'";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT *\r\nFROM KETQUA\r\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\' AND" +
-                " MaHK = @MaHK";
+            this._commandCollection[5].CommandText = "SELECT *\nFROM KETQUA\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\' AND M" +
+                "aHK = @MaHK";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -13337,9 +13335,9 @@ SELECT MaKQ, MaSV, MaHK, SoTinChiDat, DiemTB, XepLoai, TrangThai FROM KETQUA WHE
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[LOP] ([MaLop], [TenLop], [KhoaHoc], [SiSo], [MaBM], [MaKhoa], " +
-                "[MaGV]) VALUES (@MaLop, @TenLop, @KhoaHoc, @SiSo, @MaBM, @MaKhoa, @MaGV);\r\nSELEC" +
-                "T MaLop, TenLop, KhoaHoc, SiSo, MaBM, MaKhoa, MaGV FROM LOP WHERE (MaLop = @MaLo" +
-                "p)";
+                "[MaGV]) VALUES (@MaLop, @TenLop, @KhoaHoc, @SiSo, @MaBM, @MaKhoa, @MaGV);\nSELECT" +
+                " MaLop, TenLop, KhoaHoc, SiSo, MaBM, MaKhoa, MaGV FROM LOP WHERE (MaLop = @MaLop" +
+                ")";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaLop", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenLop", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenLop", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -13391,8 +13389,8 @@ SELECT MaLop, TenLop, KhoaHoc, SiSo, MaBM, MaKhoa, MaGV FROM LOP WHERE (MaLop = 
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT LOP.*\r\n\nFROM LOP\r\nINNER JOIN GIANGVIEN ON LOP.MaGV = GIANGVIEN.MaGV\r\nWHERE" +
-                " LOP.MaGV = @MaGV";
+            this._commandCollection[1].CommandText = "SELECT LOP.*\n\nFROM LOP\nINNER JOIN GIANGVIEN ON LOP.MaGV = GIANGVIEN.MaGV\nWHERE LO" +
+                "P.MaGV = @MaGV";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaGV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -13402,14 +13400,14 @@ SELECT MaLop, TenLop, KhoaHoc, SiSo, MaBM, MaKhoa, MaGV FROM LOP WHERE (MaLop = 
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT * \r\nFROM LOP WHERE MaKhoa = @MaKhoa AND LOWER(RTRIM(MaLop)) LIKE \'%\' + LOW" +
-                "ER(@MaLop) + \'%\'";
+            this._commandCollection[3].CommandText = "SELECT * \nFROM LOP WHERE MaKhoa = @MaKhoa AND LOWER(RTRIM(MaLop)) LIKE \'%\' + LOWE" +
+                "R(@MaLop) + \'%\'";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT * \r\nFROM LOP WHERE LOWER(RTRIM(MaLop)) LIKE \'%\' + LOWER(@MaLop) + \'%\'";
+            this._commandCollection[4].CommandText = "SELECT * \nFROM LOP WHERE LOWER(RTRIM(MaLop)) LIKE \'%\' + LOWER(@MaLop) + \'%\'";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

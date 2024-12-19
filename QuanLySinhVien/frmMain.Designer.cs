@@ -235,14 +235,14 @@
             // mnuHuongDan
             // 
             this.mnuHuongDan.Name = "mnuHuongDan";
-            this.mnuHuongDan.Size = new System.Drawing.Size(224, 26);
+            this.mnuHuongDan.Size = new System.Drawing.Size(191, 26);
             this.mnuHuongDan.Text = "Hướng Dẫn";
             this.mnuHuongDan.Click += new System.EventHandler(this.mnuHuongDan_Click);
             // 
             // mnuVeChungToi
             // 
             this.mnuVeChungToi.Name = "mnuVeChungToi";
-            this.mnuVeChungToi.Size = new System.Drawing.Size(224, 26);
+            this.mnuVeChungToi.Size = new System.Drawing.Size(191, 26);
             this.mnuVeChungToi.Text = "Về Chúng Tôi";
             this.mnuVeChungToi.Click += new System.EventHandler(this.mnuVeChungToi_Click);
             // 
@@ -287,7 +287,7 @@
             this.Controls.Add(this.pnlMain);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main";
+            this.Text = "Quản Lý Sinh Viên";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
