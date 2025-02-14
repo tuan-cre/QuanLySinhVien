@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AZJ
@@ -48,8 +49,56 @@ namespace AZJ
             cboFillterHocKy.ValueMember = "MaHK";
             cboFillterHocKy.SelectedIndex = 0;
 
+            DataTable dt3 = this.monhocTableAdapter.GetData();
+            cboMonHoc.DataSource = dt3;
+            cboMonHoc.DisplayMember = "TenMH";
+            cboMonHoc.ValueMember = "MaMH";
+
+            DataTable dt4 = this.hockyTableAdapter.GetData();
+            cboHocKy.DataSource = dt4;
+            cboHocKy.DisplayMember = "TenHK";
+            cboHocKy.ValueMember = "MaHK";
+
             this.diemTableAdapter.Fill(this.qLSVDataSet.DIEM);
+
+            //DataTable dt5 = JoinDiemAndMonHoc(this.qLSVDataSet.DIEM, this.qLSVDataSet.MONHOC);
+            //dgvDiem.DataSource = dt5;
+
         }
+        //private DataTable JoinDiemAndMonHoc(DataTable diemTable, DataTable monhocTable)
+        //{
+        //    var result = new DataTable();
+        //    result.Columns.Add("MaSV", typeof(string));
+        //    result.Columns.Add("MaMH", typeof(string));
+        //    result.Columns.Add("TenMH", typeof(string));
+        //    result.Columns.Add("MaHK", typeof(string));
+        //    result.Columns.Add("DiemGiuaKy", typeof(float));
+        //    result.Columns.Add("DiemCuoiKy", typeof(float));
+        //    result.Columns.Add("DiemTongKet", typeof(float));
+        //    result.Columns.Add("TrangThai", typeof(string));
+
+        //    var query = from diem in diemTable.AsEnumerable()
+        //                join monhoc in monhocTable.AsEnumerable()
+        //                on diem.Field<string>("MaMH") equals monhoc.Field<string>("MaMH")
+        //                select new
+        //                {
+        //                    MaSV = diem.Field<string>("MaSV"),
+        //                    MaMH = diem.Field<string>("MaMH"),
+        //                    TenMH = monhoc.Field<string>("TenMH"),
+        //                    MaHK = diem.Field<string>("MaHK"),
+        //                    DiemGiuaKy = diem.Field<float?>("DiemGiuaKy"),
+        //                    DiemCuoiKy = diem.Field<float?>("DiemCuoiKy"),
+        //                    DiemTongKet = diem.Field<float?>("DiemTongKet"),
+        //                    TrangThai = diem.Field<string>("TrangThai")
+        //                };
+
+        //    foreach (var row in query)
+        //    {
+        //        result.Rows.Add(row.MaSV, row.MaMH, row.TenMH, row.MaHK, row.DiemGiuaKy, row.DiemCuoiKy, row.DiemTongKet, row.TrangThai);
+        //    }
+
+        //    return result;
+        //}
 
         private void cboFillterMonHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -81,15 +130,13 @@ namespace AZJ
                 this.diemTableAdapter.Fill(this.qLSVDataSet.DIEM);
             }
         }
-
         private void dgvDiem_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvDiem.CurrentRow != null)
             {
-                txtMaDiem.Text = dgvDiem.CurrentRow.Cells["MaDiem"].Value.ToString();
                 txtMaSV.Text = dgvDiem.CurrentRow.Cells["MaSV"].Value.ToString().Trim();
-                txtMaMH.Text = dgvDiem.CurrentRow.Cells["MaMH"].Value.ToString().Trim();
-                txtMaHK.Text = dgvDiem.CurrentRow.Cells["MaHK"].Value.ToString().Trim();
+                cboMonHoc.SelectedValue = dgvDiem.CurrentRow.Cells["MaMH"].Value.ToString().Trim();
+                cboHocKy.SelectedValue = dgvDiem.CurrentRow.Cells["MaHK"].Value.ToString().Trim();
                 txtDiemGiuaKy.Text = dgvDiem.CurrentRow.Cells["DiemGiuaKy"].Value.ToString();
                 txtDiemCuoiKy.Text = dgvDiem.CurrentRow.Cells["DiemCuoiKy"].Value.ToString();
                 txtDiemTongKet.Text = dgvDiem.CurrentRow.Cells["DiemTongKet"].Value.ToString();
@@ -102,10 +149,9 @@ namespace AZJ
             try
             {
                 DataRow newRow = qLSVDataSet.DIEM.NewRow();
-                newRow["MaDiem"] = 0;
                 newRow["MaSV"] = txtMaSV.Text;
-                newRow["MaMH"] = txtMaMH.Text;
-                newRow["MaHK"] = txtMaHK.Text;
+                newRow["MaMH"] = cboMonHoc.Text;
+                newRow["MaHK"] = cboHocKy.Text;
                 if (txtDiemGiuaKy.Text != "")
                 {
                     newRow["DiemGiuaKy"] = float.Parse(txtDiemGiuaKy.Text);
@@ -140,8 +186,8 @@ namespace AZJ
                 DataRowView rowView = dgvDiem.CurrentRow.DataBoundItem as DataRowView;
                 DataRow rowToEdit = rowView.Row;
                 rowToEdit["MaSV"] = txtMaSV.Text;
-                rowToEdit["MaMH"] = txtMaMH.Text;
-                rowToEdit["MaHK"] = txtMaHK.Text;
+                rowToEdit["MaMH"] = cboMonHoc.Text;
+                rowToEdit["MaHK"] = cboHocKy.Text;
                 if (txtDiemGiuaKy.Text != "")
                 {
                     rowToEdit["DiemGiuaKy"] = txtDiemGiuaKy.Text;
@@ -213,10 +259,9 @@ namespace AZJ
         {
             dgvDiem.ClearSelection();
             dgvDiem.Refresh();
-            txtMaDiem.Text = "";
             txtMaSV.Text = "";
-            txtMaMH.Text = "";
-            txtMaHK.Text = "";
+            cboMonHoc.SelectedValue = null;
+            cboHocKy.SelectedValue = null;
             txtDiemGiuaKy.Text = "";
             txtDiemCuoiKy.Text = "";
             txtDiemTongKet.Text = "";

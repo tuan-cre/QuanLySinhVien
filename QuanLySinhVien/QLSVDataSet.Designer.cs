@@ -2383,8 +2383,6 @@ namespace AZJ {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DIEMDataTable : global::System.Data.TypedTableBase<DIEMRow> {
             
-            private global::System.Data.DataColumn columnMaDiem;
-            
             private global::System.Data.DataColumn columnMaSV;
             
             private global::System.Data.DataColumn columnMaMH;
@@ -2430,14 +2428,6 @@ namespace AZJ {
             protected DIEMDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn MaDiemColumn {
-                get {
-                    return this.columnMaDiem;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2539,19 +2529,18 @@ namespace AZJ {
                         null,
                         null,
                         null,
-                        null,
                         DiemGiuaKy,
                         DiemCuoiKy,
                         DiemTongKet,
                         TrangThai};
                 if ((parentSINHVIENRowByFK_MaSV_DIEM != null)) {
-                    columnValuesArray[1] = parentSINHVIENRowByFK_MaSV_DIEM[0];
+                    columnValuesArray[0] = parentSINHVIENRowByFK_MaSV_DIEM[0];
                 }
                 if ((parentMONHOCRowByFK_MaMH_DIEM != null)) {
-                    columnValuesArray[2] = parentMONHOCRowByFK_MaMH_DIEM[0];
+                    columnValuesArray[1] = parentMONHOCRowByFK_MaMH_DIEM[0];
                 }
                 if ((parentHOCKYRowByFK_MaHK_DIEM != null)) {
-                    columnValuesArray[3] = parentHOCKYRowByFK_MaHK_DIEM[0];
+                    columnValuesArray[2] = parentHOCKYRowByFK_MaHK_DIEM[0];
                 }
                 rowDIEMRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDIEMRow);
@@ -2560,9 +2549,11 @@ namespace AZJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DIEMRow FindByMaDiem(int MaDiem) {
+            public DIEMRow FindByMaSVMaMHMaHK(string MaSV, string MaMH, string MaHK) {
                 return ((DIEMRow)(this.Rows.Find(new object[] {
-                            MaDiem})));
+                            MaSV,
+                            MaMH,
+                            MaHK})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2582,7 +2573,6 @@ namespace AZJ {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnMaDiem = base.Columns["MaDiem"];
                 this.columnMaSV = base.Columns["MaSV"];
                 this.columnMaMH = base.Columns["MaMH"];
                 this.columnMaHK = base.Columns["MaHK"];
@@ -2595,8 +2585,6 @@ namespace AZJ {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnMaDiem = new global::System.Data.DataColumn("MaDiem", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMaDiem);
                 this.columnMaSV = new global::System.Data.DataColumn("MaSV", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaSV);
                 this.columnMaMH = new global::System.Data.DataColumn("MaMH", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2612,15 +2600,14 @@ namespace AZJ {
                 this.columnTrangThai = new global::System.Data.DataColumn("TrangThai", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTrangThai);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnMaDiem}, true));
-                this.columnMaDiem.AutoIncrement = true;
-                this.columnMaDiem.AutoIncrementSeed = -1;
-                this.columnMaDiem.AutoIncrementStep = -1;
-                this.columnMaDiem.AllowDBNull = false;
-                this.columnMaDiem.ReadOnly = true;
-                this.columnMaDiem.Unique = true;
+                                this.columnMaSV,
+                                this.columnMaMH,
+                                this.columnMaHK}, true));
+                this.columnMaSV.AllowDBNull = false;
                 this.columnMaSV.MaxLength = 10;
+                this.columnMaMH.AllowDBNull = false;
                 this.columnMaMH.MaxLength = 10;
+                this.columnMaHK.AllowDBNull = false;
                 this.columnMaHK.MaxLength = 10;
                 this.columnDiemTongKet.ReadOnly = true;
                 this.columnTrangThai.MaxLength = 20;
@@ -5071,25 +5058,9 @@ namespace AZJ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int MaDiem {
-                get {
-                    return ((int)(this[this.tableDIEM.MaDiemColumn]));
-                }
-                set {
-                    this[this.tableDIEM.MaDiemColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string MaSV {
                 get {
-                    try {
-                        return ((string)(this[this.tableDIEM.MaSVColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MaSV\' in table \'DIEM\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableDIEM.MaSVColumn]));
                 }
                 set {
                     this[this.tableDIEM.MaSVColumn] = value;
@@ -5100,12 +5071,7 @@ namespace AZJ {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string MaMH {
                 get {
-                    try {
-                        return ((string)(this[this.tableDIEM.MaMHColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MaMH\' in table \'DIEM\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableDIEM.MaMHColumn]));
                 }
                 set {
                     this[this.tableDIEM.MaMHColumn] = value;
@@ -5116,12 +5082,7 @@ namespace AZJ {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string MaHK {
                 get {
-                    try {
-                        return ((string)(this[this.tableDIEM.MaHKColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MaHK\' in table \'DIEM\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableDIEM.MaHKColumn]));
                 }
                 set {
                     this[this.tableDIEM.MaHKColumn] = value;
@@ -5223,42 +5184,6 @@ namespace AZJ {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_MaHK_DIEM"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMaSVNull() {
-                return this.IsNull(this.tableDIEM.MaSVColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMaSVNull() {
-                this[this.tableDIEM.MaSVColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMaMHNull() {
-                return this.IsNull(this.tableDIEM.MaMHColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMaMHNull() {
-                this[this.tableDIEM.MaMHColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMaHKNull() {
-                return this.IsNull(this.tableDIEM.MaHKColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMaHKNull() {
-                this[this.tableDIEM.MaHKColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6721,13 +6646,13 @@ SELECT MaSV, HoTen, NgaySinh, GioiTinh, DiaChi, Email, SDT, TrangThai, MaLop, Ma
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT * \nFROM SINHVIEN\n\nWHERE LOWER(RTRIM(HoTen)) LIKE \'%\' + LOWER(@HoTen) + \'%\'" +
-                "";
+            this._commandCollection[2].CommandText = "SELECT * \r\nFROM SINHVIEN\r\n\r\nWHERE LOWER(RTRIM(HoTen)) LIKE \'%\' + LOWER(@HoTen) + " +
+                "\'%\'";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT * FROM SINHVIEN WHERE MaKhoa = @MaKhoa AND MaLop =@MaLop\n";
+            this._commandCollection[3].CommandText = "SELECT * FROM SINHVIEN WHERE MaKhoa = @MaKhoa AND MaLop =@MaLop\r\n";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaLop", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6743,29 +6668,30 @@ SELECT MaSV, HoTen, NgaySinh, GioiTinh, DiaChi, Email, SDT, TrangThai, MaLop, Ma
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaLop", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT * \nFROM SINHVIEN\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\'";
+            this._commandCollection[6].CommandText = "SELECT * \r\nFROM SINHVIEN\r\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\'";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "SELECT * \nFROM SINHVIEN \nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\' A" +
-                "ND MaKhoa = @MaKhoa";
+            this._commandCollection[7].CommandText = "SELECT * \r\nFROM SINHVIEN \r\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\'" +
+                " AND MaKhoa = @MaKhoa";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "SELECT * \nFROM SINHVIEN \nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\' A" +
-                "ND MaLop = @MaLop AND MaKhoa = @MaKhoa";
+            this._commandCollection[8].CommandText = "SELECT * \r\nFROM SINHVIEN \r\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\'" +
+                " AND MaLop = @MaLop AND MaKhoa = @MaKhoa";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaLop", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[9].Connection = this.Connection;
-            this._commandCollection[9].CommandText = "UPDATE SINHVIEN\nSET HoTen = @HoTen,\n    NgaySinh = @NgaySinh,\n    GioiTinh = @Gio" +
-                "iTinh,\n    DiaChi = @DiaChi,\n    Email = @Email,\n    SDT = @SDT,\n    TrangThai =" +
-                " @TrangThai,\n    MaLop = @MaLop,\n    MaKhoa = @MaKhoa\nWHERE MaSV = @MaSV;";
+            this._commandCollection[9].CommandText = "UPDATE SINHVIEN\r\nSET HoTen = @HoTen,\r\n    NgaySinh = @NgaySinh,\r\n    GioiTinh = @" +
+                "GioiTinh,\r\n    DiaChi = @DiaChi,\r\n    Email = @Email,\r\n    SDT = @SDT,\r\n    Tran" +
+                "gThai = @TrangThai,\r\n    MaLop = @MaLop,\r\n    MaKhoa = @MaKhoa\r\nWHERE MaSV = @Ma" +
+                "SV;";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "HoTen", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NgaySinh", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "NgaySinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7849,8 +7775,9 @@ SELECT MaSV, HoTen, NgaySinh, GioiTinh, DiaChi, Email, SDT, TrangThai, MaLop, Ma
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[KHOA] ([MaKhoa], [TenKhoa], [TruongKhoa], [DiaChi], [SDT], [Em" +
-                "ail]) VALUES (@MaKhoa, @TenKhoa, @TruongKhoa, @DiaChi, @SDT, @Email);\nSELECT MaK" +
-                "hoa, TenKhoa, TruongKhoa, DiaChi, SDT, Email FROM KHOA WHERE (MaKhoa = @MaKhoa)";
+                "ail]) VALUES (@MaKhoa, @TenKhoa, @TruongKhoa, @DiaChi, @SDT, @Email);\r\nSELECT Ma" +
+                "Khoa, TenKhoa, TruongKhoa, DiaChi, SDT, Email FROM KHOA WHERE (MaKhoa = @MaKhoa)" +
+                "";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenKhoa", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7898,13 +7825,14 @@ SELECT MaKhoa, TenKhoa, TruongKhoa, DiaChi, SDT, Email FROM KHOA WHERE (MaKhoa =
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT KHOA.*\n\nFROM KHOA\nINNER JOIN GIANGVIEN ON KHOA.MaKhoa = GIANGVIEN.MaKhoa\nW" +
-                "HERE MaGV = @MaGV";
+            this._commandCollection[1].CommandText = "SELECT KHOA.*\r\n\r\nFROM KHOA\r\nINNER JOIN GIANGVIEN ON KHOA.MaKhoa = GIANGVIEN.MaKho" +
+                "a\r\nWHERE MaGV = @MaGV";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaGV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT * \nFROM KHOA \nWHERE LOWER(RTRIM(MaKhoa)) LIKE \'%\' + LOWER(@MaKhoa) + \'%\' ";
+            this._commandCollection[2].CommandText = "SELECT * \r\nFROM KHOA \r\nWHERE LOWER(RTRIM(MaKhoa)) LIKE \'%\' + LOWER(@MaKhoa) + \'%\'" +
+                " ";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -8405,8 +8333,8 @@ SELECT MaKhoa, TenKhoa, TruongKhoa, DiaChi, SDT, Email FROM KHOA WHERE (MaKhoa =
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[BOMON] ([MaBM], [TenBM], [TruongBM], [MaKhoa]) VALUES (@MaBM, " +
-                "@TenBM, @TruongBM, @MaKhoa);\nSELECT MaBM, TenBM, TruongBM, MaKhoa FROM BOMON WHE" +
-                "RE (MaBM = @MaBM)";
+                "@TenBM, @TruongBM, @MaKhoa);\r\nSELECT MaBM, TenBM, TruongBM, MaKhoa FROM BOMON WH" +
+                "ERE (MaBM = @MaBM)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBM", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaBM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenBM", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenBM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8446,13 +8374,13 @@ SELECT MaBM, TenBM, TruongBM, MaKhoa FROM BOMON WHERE (MaBM = @MaBM)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT * \nFROM BOMON \nWHERE LOWER(RTRIM(MaBM)) LIKE \'%\' + LOWER(@MaBM) + \'%\'";
+            this._commandCollection[1].CommandText = "SELECT * \r\nFROM BOMON \r\nWHERE LOWER(RTRIM(MaBM)) LIKE \'%\' + LOWER(@MaBM) + \'%\'";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBM", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT * \nFROM BOMON \nWHERE LOWER(RTRIM(MaBM)) LIKE \'%\' + LOWER(@MaBM) + \'%\' AND " +
-                "MaKhoa = @MaKhoa";
+            this._commandCollection[2].CommandText = "SELECT * \r\nFROM BOMON \r\nWHERE LOWER(RTRIM(MaBM)) LIKE \'%\' + LOWER(@MaBM) + \'%\' AN" +
+                "D MaKhoa = @MaKhoa";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBM", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8953,9 +8881,9 @@ SELECT MaBM, TenBM, TruongBM, MaKhoa FROM BOMON WHERE (MaBM = @MaBM)";
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TAIKHOAN] ([TenDangNhap], [MatKhau], [LoaiTaiKhoan], [MaSV], [" +
-                "MaGV]) VALUES (@TenDangNhap, @MatKhau, @LoaiTaiKhoan, @MaSV, @MaGV);\nSELECT TenD" +
-                "angNhap, MatKhau, LoaiTaiKhoan, MaSV, MaGV FROM TAIKHOAN WHERE (TenDangNhap = @T" +
-                "enDangNhap)";
+                "MaGV]) VALUES (@TenDangNhap, @MatKhau, @LoaiTaiKhoan, @MaSV, @MaGV);\r\nSELECT Ten" +
+                "DangNhap, MatKhau, LoaiTaiKhoan, MaSV, MaGV FROM TAIKHOAN WHERE (TenDangNhap = @" +
+                "TenDangNhap)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenDangNhap", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenDangNhap", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MatKhau", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatKhau", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9013,15 +8941,15 @@ SELECT TenDangNhap, MatKhau, LoaiTaiKhoan, MaSV, MaGV FROM TAIKHOAN WHERE (TenDa
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaGV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT * \nFROM TAIKHOAN\n\nWHERE \nLOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSo) + \'%\' " +
-                "OR LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaSo) + \'%\' ";
+            this._commandCollection[4].CommandText = "SELECT * \r\nFROM TAIKHOAN\r\n\r\nWHERE \r\nLOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSo) + " +
+                "\'%\' OR LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaSo) + \'%\' ";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSo", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT * \nFROM TAIKHOAN\nWHERE \n(LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSo) + \'%\' " +
-                "OR LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaSo) + \'%\')\nAND LoaiTaiKhoan = @LoaiTai" +
-                "Khoan";
+            this._commandCollection[5].CommandText = "SELECT * \r\nFROM TAIKHOAN\r\nWHERE \r\n(LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSo) + \'" +
+                "%\' OR LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaSo) + \'%\')\r\nAND LoaiTaiKhoan = @Loa" +
+                "iTaiKhoan";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSo", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoaiTaiKhoan", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "LoaiTaiKhoan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9695,7 +9623,7 @@ SELECT TenDangNhap, MatKhau, LoaiTaiKhoan, MaSV, MaGV FROM TAIKHOAN WHERE (TenDa
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[MONHOC] ([MaMH], [TenMH], [STC], [MaBM]) VALUES (@MaMH, @TenMH" +
-                ", @STC, @MaBM);\nSELECT MaMH, TenMH, STC, MaBM FROM MONHOC WHERE (MaMH = @MaMH)";
+                ", @STC, @MaBM);\r\nSELECT MaMH, TenMH, STC, MaBM FROM MONHOC WHERE (MaMH = @MaMH)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaMH", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenMH", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenMH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9747,7 +9675,7 @@ SELECT MaMH, TenMH, STC, MaBM FROM MONHOC WHERE (MaMH = @MaMH)";
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaMH", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT * \nFROM MONHOC WHERE LOWER(RTRIM(MaMH)) LIKE \'%\' + LOWER(@MaMH) + \'%\'";
+            this._commandCollection[3].CommandText = "SELECT * \r\nFROM MONHOC WHERE LOWER(RTRIM(MaMH)) LIKE \'%\' + LOWER(@MaMH) + \'%\'";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaMH", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -10222,7 +10150,6 @@ SELECT MaMH, TenMH, STC, MaBM FROM MONHOC WHERE (MaMH = @MaMH)";
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "DIEM";
-            tableMapping.ColumnMappings.Add("MaDiem", "MaDiem");
             tableMapping.ColumnMappings.Add("MaSV", "MaSV");
             tableMapping.ColumnMappings.Add("MaMH", "MaMH");
             tableMapping.ColumnMappings.Add("MaHK", "MaHK");
@@ -10233,14 +10160,10 @@ SELECT MaMH, TenMH, STC, MaBM FROM MONHOC WHERE (MaMH = @MaMH)";
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[DIEM] WHERE (([MaDiem] = @Original_MaDiem) AND ((@IsNull_MaSV = 1 AND [MaSV] IS NULL) OR ([MaSV] = @Original_MaSV)) AND ((@IsNull_MaMH = 1 AND [MaMH] IS NULL) OR ([MaMH] = @Original_MaMH)) AND ((@IsNull_MaHK = 1 AND [MaHK] IS NULL) OR ([MaHK] = @Original_MaHK)) AND ((@IsNull_DiemGiuaKy = 1 AND [DiemGiuaKy] IS NULL) OR ([DiemGiuaKy] = @Original_DiemGiuaKy)) AND ((@IsNull_DiemCuoiKy = 1 AND [DiemCuoiKy] IS NULL) OR ([DiemCuoiKy] = @Original_DiemCuoiKy)) AND ((@IsNull_DiemTongKet = 1 AND [DiemTongKet] IS NULL) OR ([DiemTongKet] = @Original_DiemTongKet)) AND ((@IsNull_TrangThai = 1 AND [TrangThai] IS NULL) OR ([TrangThai] = @Original_TrangThai)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [DIEM] WHERE (([MaSV] = @Original_MaSV) AND ([MaMH] = @Original_MaMH) AND ([MaHK] = @Original_MaHK) AND ((@IsNull_DiemGiuaKy = 1 AND [DiemGiuaKy] IS NULL) OR ([DiemGiuaKy] = @Original_DiemGiuaKy)) AND ((@IsNull_DiemCuoiKy = 1 AND [DiemCuoiKy] IS NULL) OR ([DiemCuoiKy] = @Original_DiemCuoiKy)) AND ((@IsNull_DiemTongKet = 1 AND [DiemTongKet] IS NULL) OR ([DiemTongKet] = @Original_DiemTongKet)) AND ((@IsNull_TrangThai = 1 AND [TrangThai] IS NULL) OR ([TrangThai] = @Original_TrangThai)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaDiem", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaDiem", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaSV", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaSV", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaMH", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaMH", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaHK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaHK", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DiemGiuaKy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DiemGiuaKy", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DiemGiuaKy", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DiemGiuaKy", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -10252,8 +10175,8 @@ SELECT MaMH, TenMH, STC, MaBM FROM MONHOC WHERE (MaMH = @MaMH)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TrangThai", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TrangThai", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[DIEM] ([MaSV], [MaMH], [MaHK], [DiemGiuaKy], [DiemCuoiKy], [TrangThai]) VALUES (@MaSV, @MaMH, @MaHK, @DiemGiuaKy, @DiemCuoiKy, @TrangThai);
-SELECT MaDiem, MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai FROM DIEM WHERE (MaDiem = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [DIEM] ([MaSV], [MaMH], [MaHK], [DiemGiuaKy], [DiemCuoiKy], [TrangThai]) VALUES (@MaSV, @MaMH, @MaHK, @DiemGiuaKy, @DiemCuoiKy, @TrangThai);
+SELECT MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai FROM DIEM WHERE (MaHK = @MaHK) AND (MaMH = @MaMH) AND (MaSV = @MaSV)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaMH", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10263,8 +10186,8 @@ SELECT MaDiem, MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai 
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TrangThai", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TrangThai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DIEM] SET [MaSV] = @MaSV, [MaMH] = @MaMH, [MaHK] = @MaHK, [DiemGiuaKy] = @DiemGiuaKy, [DiemCuoiKy] = @DiemCuoiKy, [TrangThai] = @TrangThai WHERE (([MaDiem] = @Original_MaDiem) AND ((@IsNull_MaSV = 1 AND [MaSV] IS NULL) OR ([MaSV] = @Original_MaSV)) AND ((@IsNull_MaMH = 1 AND [MaMH] IS NULL) OR ([MaMH] = @Original_MaMH)) AND ((@IsNull_MaHK = 1 AND [MaHK] IS NULL) OR ([MaHK] = @Original_MaHK)) AND ((@IsNull_DiemGiuaKy = 1 AND [DiemGiuaKy] IS NULL) OR ([DiemGiuaKy] = @Original_DiemGiuaKy)) AND ((@IsNull_DiemCuoiKy = 1 AND [DiemCuoiKy] IS NULL) OR ([DiemCuoiKy] = @Original_DiemCuoiKy)) AND ((@IsNull_DiemTongKet = 1 AND [DiemTongKet] IS NULL) OR ([DiemTongKet] = @Original_DiemTongKet)) AND ((@IsNull_TrangThai = 1 AND [TrangThai] IS NULL) OR ([TrangThai] = @Original_TrangThai)));
-SELECT MaDiem, MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai FROM DIEM WHERE (MaDiem = @MaDiem)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [DIEM] SET [MaSV] = @MaSV, [MaMH] = @MaMH, [MaHK] = @MaHK, [DiemGiuaKy] = @DiemGiuaKy, [DiemCuoiKy] = @DiemCuoiKy, [TrangThai] = @TrangThai WHERE (([MaSV] = @Original_MaSV) AND ([MaMH] = @Original_MaMH) AND ([MaHK] = @Original_MaHK) AND ((@IsNull_DiemGiuaKy = 1 AND [DiemGiuaKy] IS NULL) OR ([DiemGiuaKy] = @Original_DiemGiuaKy)) AND ((@IsNull_DiemCuoiKy = 1 AND [DiemCuoiKy] IS NULL) OR ([DiemCuoiKy] = @Original_DiemCuoiKy)) AND ((@IsNull_DiemTongKet = 1 AND [DiemTongKet] IS NULL) OR ([DiemTongKet] = @Original_DiemTongKet)) AND ((@IsNull_TrangThai = 1 AND [TrangThai] IS NULL) OR ([TrangThai] = @Original_TrangThai)));
+SELECT MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai FROM DIEM WHERE (MaHK = @MaHK) AND (MaMH = @MaMH) AND (MaSV = @MaSV)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaMH", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10272,12 +10195,8 @@ SELECT MaDiem, MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DiemGiuaKy", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DiemGiuaKy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DiemCuoiKy", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DiemCuoiKy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TrangThai", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TrangThai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaDiem", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaDiem", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaSV", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaSV", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaMH", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaMH", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaHK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaHK", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DiemGiuaKy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DiemGiuaKy", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DiemGiuaKy", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DiemGiuaKy", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -10287,7 +10206,6 @@ SELECT MaDiem, MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DiemTongKet", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DiemTongKet", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TrangThai", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TrangThai", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TrangThai", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TrangThai", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaDiem", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MaDiem", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10303,8 +10221,8 @@ SELECT MaDiem, MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[14];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT MaDiem, MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai F" +
-                "ROM dbo.DIEM";
+            this._commandCollection[0].CommandText = "SELECT MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai FROM DIEM" +
+                "";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -10338,42 +10256,45 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenHK", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "TenHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT DIEM.*, MONHOC.TenMH\n\nFROM DIEM\n\nINNER JOIN MONHOC ON DIEM.MaMH = MONHOC.M" +
-                "aMH";
+            this._commandCollection[5].CommandText = "SELECT DIEM.*, MONHOC.TenMH\r\n\r\nFROM DIEM\r\n\r\nINNER JOIN MONHOC ON DIEM.MaMH = MONH" +
+                "OC.MaMH";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT DIEM.*, MONHOC.TenMH, HOCKY.TenHK\n\nFROM DIEM\n\nINNER JOIN MONHOC ON DIEM.Ma" +
-                "MH = MONHOC.MaMH\n\nINNER JOIN HOCKY ON DIEM.MaHK = HOCKY.MaHK";
+            this._commandCollection[6].CommandText = "SELECT DIEM.*, MONHOC.TenMH, HOCKY.TenHK\r\n\r\nFROM DIEM\r\n\r\nINNER JOIN MONHOC ON DIE" +
+                "M.MaMH = MONHOC.MaMH\r\n\r\nINNER JOIN HOCKY ON DIEM.MaHK = HOCKY.MaHK";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "SELECT * FROM DIEM WHERE MaHK = @MaHK";
+            this._commandCollection[7].CommandText = "SELECT MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai FROM DIEM" +
+                " WHERE (MaHK = @MaHK)";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "SELECT * FROM DIEM WHERE MaMH = @MaMH";
+            this._commandCollection[8].CommandText = "SELECT MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai FROM DIEM" +
+                " WHERE (MaMH = @MaMH)";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaMH", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[9].Connection = this.Connection;
-            this._commandCollection[9].CommandText = "SELECT * FROM DIEM WHERE MaMH = @MaMH AND MaHK = @MaHK";
+            this._commandCollection[9].CommandText = "SELECT MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, DiemTongKet, TrangThai FROM DIEM" +
+                " WHERE (MaMH = @MaMH) AND (MaHK = @MaHK)";
             this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaMH", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaMH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[10].Connection = this.Connection;
-            this._commandCollection[10].CommandText = "SELECT AVG(DiemTongKet) AS DiemTrungBinh\nFROM DIEM\nWHERE MaSV = @MaSV AND MaHK = " +
-                "@MaHK;";
+            this._commandCollection[10].CommandText = "SELECT AVG(DiemTongKet) AS DiemTrungBinh\r\nFROM DIEM\r\nWHERE MaSV = @MaSV AND MaHK " +
+                "= @MaHK;";
             this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[11] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[11].Connection = this.Connection;
-            this._commandCollection[11].CommandText = "SELECT SUM(MONHOC.STC) AS TongSoTinChi\nFROM DIEM\nINNER JOIN MONHOC ON DIEM.MaMH =" +
-                " MONHOC.MaMH\nWHERE DIEM.MaSV = @MaSV AND DIEM.MaHK = @MaHK AND DIEM.TrangThai = " +
-                "\'Đạt\';";
+            this._commandCollection[11].CommandText = "SELECT SUM(MONHOC.STC) AS TongSoTinChi\r\nFROM DIEM\r\nINNER JOIN MONHOC ON DIEM.MaMH" +
+                " = MONHOC.MaMH\r\nWHERE DIEM.MaSV = @MaSV AND DIEM.MaHK = @MaHK AND DIEM.TrangThai" +
+                " = \'Đạt\';";
             this._commandCollection[11].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[11].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10424,7 +10345,7 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual int FillBy3B(QLSVDataSet.DIEMDataTable dataTable, string MaSV) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((MaSV == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaSV");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaSV));
@@ -10443,7 +10364,7 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual QLSVDataSet.DIEMDataTable GetDataBy3B(string MaSV) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((MaSV == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaSV");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaSV));
@@ -10460,7 +10381,7 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual int FillBy3BMaHK(QLSVDataSet.DIEMDataTable dataTable, string MaSV, string TenHK) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((MaSV == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaSV");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaSV));
@@ -10485,7 +10406,7 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual QLSVDataSet.DIEMDataTable GetDataBy3BMaHK(string MaSV, string TenHK) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((MaSV == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaSV");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaSV));
@@ -10556,7 +10477,7 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual int FillByMaHK(QLSVDataSet.DIEMDataTable dataTable, string MaHK) {
             this.Adapter.SelectCommand = this.CommandCollection[7];
             if ((MaHK == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaHK");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaHK));
@@ -10575,7 +10496,7 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual QLSVDataSet.DIEMDataTable GetDataByMaHK(string MaHK) {
             this.Adapter.SelectCommand = this.CommandCollection[7];
             if ((MaHK == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaHK");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaHK));
@@ -10592,7 +10513,7 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual int FillByMaMH(QLSVDataSet.DIEMDataTable dataTable, string MaMH) {
             this.Adapter.SelectCommand = this.CommandCollection[8];
             if ((MaMH == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaMH");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaMH));
@@ -10611,7 +10532,7 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual QLSVDataSet.DIEMDataTable GetDataByMaMH(string MaMH) {
             this.Adapter.SelectCommand = this.CommandCollection[8];
             if ((MaMH == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaMH");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaMH));
@@ -10628,13 +10549,13 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual int FillByMaMHMaHK(QLSVDataSet.DIEMDataTable dataTable, string MaMH, string MaHK) {
             this.Adapter.SelectCommand = this.CommandCollection[9];
             if ((MaMH == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaMH");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaMH));
             }
             if ((MaHK == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaHK");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(MaHK));
@@ -10653,13 +10574,13 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual QLSVDataSet.DIEMDataTable GetDataByMaMHMaHK(string MaMH, string MaHK) {
             this.Adapter.SelectCommand = this.CommandCollection[9];
             if ((MaMH == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaMH");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(MaMH));
             }
             if ((MaHK == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaHK");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(MaHK));
@@ -10702,63 +10623,56 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_MaDiem, string Original_MaSV, string Original_MaMH, string Original_MaHK, global::System.Nullable<double> Original_DiemGiuaKy, global::System.Nullable<double> Original_DiemCuoiKy, global::System.Nullable<double> Original_DiemTongKet, string Original_TrangThai) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_MaDiem));
+        public virtual int Delete(string Original_MaSV, string Original_MaMH, string Original_MaHK, global::System.Nullable<double> Original_DiemGiuaKy, global::System.Nullable<double> Original_DiemCuoiKy, global::System.Nullable<double> Original_DiemTongKet, string Original_TrangThai) {
             if ((Original_MaSV == null)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_MaSV");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_MaSV));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_MaSV));
             }
             if ((Original_MaMH == null)) {
+                throw new global::System.ArgumentNullException("Original_MaMH");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_MaMH));
+            }
+            if ((Original_MaHK == null)) {
+                throw new global::System.ArgumentNullException("Original_MaHK");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_MaHK));
+            }
+            if ((Original_DiemGiuaKy.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_DiemGiuaKy.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_MaMH));
+            if ((Original_DiemCuoiKy.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_DiemCuoiKy.Value));
             }
-            if ((Original_MaHK == null)) {
+            else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_MaHK));
-            }
-            if ((Original_DiemGiuaKy.HasValue == true)) {
+            if ((Original_DiemTongKet.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((double)(Original_DiemGiuaKy.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((double)(Original_DiemTongKet.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_DiemCuoiKy.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((double)(Original_DiemCuoiKy.Value));
-            }
-            else {
+            if ((Original_TrangThai == null)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_DiemTongKet.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((double)(Original_DiemTongKet.Value));
-            }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TrangThai == null)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_TrangThai));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_TrangThai));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10782,19 +10696,19 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(string MaSV, string MaMH, string MaHK, global::System.Nullable<double> DiemGiuaKy, global::System.Nullable<double> DiemCuoiKy, string TrangThai) {
             if ((MaSV == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaSV");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(MaSV));
             }
             if ((MaMH == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaMH");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(MaMH));
             }
             if ((MaHK == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaHK");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(MaHK));
@@ -10837,21 +10751,21 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string MaSV, string MaMH, string MaHK, global::System.Nullable<double> DiemGiuaKy, global::System.Nullable<double> DiemCuoiKy, string TrangThai, int Original_MaDiem, string Original_MaSV, string Original_MaMH, string Original_MaHK, global::System.Nullable<double> Original_DiemGiuaKy, global::System.Nullable<double> Original_DiemCuoiKy, global::System.Nullable<double> Original_DiemTongKet, string Original_TrangThai, int MaDiem) {
+        public virtual int Update(string MaSV, string MaMH, string MaHK, global::System.Nullable<double> DiemGiuaKy, global::System.Nullable<double> DiemCuoiKy, string TrangThai, string Original_MaSV, string Original_MaMH, string Original_MaHK, global::System.Nullable<double> Original_DiemGiuaKy, global::System.Nullable<double> Original_DiemCuoiKy, global::System.Nullable<double> Original_DiemTongKet, string Original_TrangThai) {
             if ((MaSV == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaSV");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(MaSV));
             }
             if ((MaMH == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaMH");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(MaMH));
             }
             if ((MaHK == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaHK");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(MaHK));
@@ -10874,64 +10788,56 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(TrangThai));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_MaDiem));
             if ((Original_MaSV == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_MaSV");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_MaSV));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_MaSV));
             }
             if ((Original_MaMH == null)) {
+                throw new global::System.ArgumentNullException("Original_MaMH");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_MaMH));
+            }
+            if ((Original_MaHK == null)) {
+                throw new global::System.ArgumentNullException("Original_MaHK");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_MaHK));
+            }
+            if ((Original_DiemGiuaKy.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(Original_DiemGiuaKy.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_MaMH));
+            if ((Original_DiemCuoiKy.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(Original_DiemCuoiKy.Value));
             }
-            if ((Original_MaHK == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_MaHK));
-            }
-            if ((Original_DiemGiuaKy.HasValue == true)) {
+            if ((Original_DiemTongKet.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(Original_DiemGiuaKy.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(Original_DiemTongKet.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((Original_DiemCuoiKy.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((double)(Original_DiemCuoiKy.Value));
-            }
-            else {
+            if ((Original_TrangThai == null)) {
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((Original_DiemTongKet.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((double)(Original_DiemTongKet.Value));
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_TrangThai));
             }
-            if ((Original_TrangThai == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_TrangThai));
-            }
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(MaDiem));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10952,8 +10858,8 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string MaSV, string MaMH, string MaHK, global::System.Nullable<double> DiemGiuaKy, global::System.Nullable<double> DiemCuoiKy, string TrangThai, int Original_MaDiem, string Original_MaSV, string Original_MaMH, string Original_MaHK, global::System.Nullable<double> Original_DiemGiuaKy, global::System.Nullable<double> Original_DiemCuoiKy, global::System.Nullable<double> Original_DiemTongKet, string Original_TrangThai) {
-            return this.Update(MaSV, MaMH, MaHK, DiemGiuaKy, DiemCuoiKy, TrangThai, Original_MaDiem, Original_MaSV, Original_MaMH, Original_MaHK, Original_DiemGiuaKy, Original_DiemCuoiKy, Original_DiemTongKet, Original_TrangThai, Original_MaDiem);
+        public virtual int Update(global::System.Nullable<double> DiemGiuaKy, global::System.Nullable<double> DiemCuoiKy, string TrangThai, string Original_MaSV, string Original_MaMH, string Original_MaHK, global::System.Nullable<double> Original_DiemGiuaKy, global::System.Nullable<double> Original_DiemCuoiKy, global::System.Nullable<double> Original_DiemTongKet, string Original_TrangThai) {
+            return this.Update(Original_MaSV, Original_MaMH, Original_MaHK, DiemGiuaKy, DiemCuoiKy, TrangThai, Original_MaSV, Original_MaMH, Original_MaHK, Original_DiemGiuaKy, Original_DiemCuoiKy, Original_DiemTongKet, Original_TrangThai);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11030,13 +10936,13 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual object TinhDiemTrungBinh(string MaSV, string MaHK) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[10];
             if ((MaSV == null)) {
-                command.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaSV");
             }
             else {
                 command.Parameters[0].Value = ((string)(MaSV));
             }
             if ((MaHK == null)) {
-                command.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaHK");
             }
             else {
                 command.Parameters[1].Value = ((string)(MaHK));
@@ -11070,13 +10976,13 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
         public virtual object TinhTongSoTinChi(string MaSV, string MaHK) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[11];
             if ((MaSV == null)) {
-                command.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaSV");
             }
             else {
                 command.Parameters[0].Value = ((string)(MaSV));
             }
             if ((MaHK == null)) {
-                command.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("MaHK");
             }
             else {
                 command.Parameters[1].Value = ((string)(MaHK));
@@ -11326,8 +11232,8 @@ WHERE DIEM.MaSV = @MaSV AND HOCKY.TenHK = @TenHK";
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[HOCKY] ([MaHK], [TenHK], [NamHoc], [NgayBD], [NgayKT]) VALUES " +
-                "(@MaHK, @TenHK, @NamHoc, @NgayBD, @NgayKT);\nSELECT MaHK, TenHK, NamHoc, NgayBD, " +
-                "NgayKT FROM HOCKY WHERE (MaHK = @MaHK)";
+                "(@MaHK, @TenHK, @NamHoc, @NgayBD, @NgayKT);\r\nSELECT MaHK, TenHK, NamHoc, NgayBD," +
+                " NgayKT FROM HOCKY WHERE (MaHK = @MaHK)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenHK", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11843,8 +11749,8 @@ SELECT MaGV, HoTen, NgaySinh, GioiTinh, DiaChi, SDT, Email, MaKhoa, MaBM FROM GI
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT * FROM GIANGVIEN \nWHERE (LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaGV) + \'%\')" +
-                " AND MaKhoa = @MaKhoa";
+            this._commandCollection[2].CommandText = "SELECT * FROM GIANGVIEN \r\nWHERE (LOWER(RTRIM(MaGV)) LIKE \'%\' + LOWER(@MaGV) + \'%\'" +
+                ") AND MaKhoa = @MaKhoa";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12657,14 +12563,14 @@ SELECT MaKQ, MaSV, MaHK, SoTinChiDat, DiemTB, XepLoai, TrangThai FROM KETQUA WHE
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT KETQUA.*, HOCKY.TenHK\n\nFROM KETQUA\nINNER JOIN HOCKY ON KETQUA.MaHK = HOCKY" +
-                ".MaHK\nWHERE MaSV = @MaSV";
+            this._commandCollection[1].CommandText = "SELECT KETQUA.*, HOCKY.TenHK\r\n\r\nFROM KETQUA\r\nINNER JOIN HOCKY ON KETQUA.MaHK = HO" +
+                "CKY.MaHK\r\nWHERE MaSV = @MaSV";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT KETQUA.*, HOCKY.TenHK\n\nFROM KETQUA\nINNER JOIN HOCKY ON KETQUA.MaHK = HOCKY" +
-                ".MaHK\nWHERE KETQUA.MaSV = @MaSV AND HocKY.TenHK = @TenHK";
+            this._commandCollection[2].CommandText = "SELECT KETQUA.*, HOCKY.TenHK\r\n\r\nFROM KETQUA\r\nINNER JOIN HOCKY ON KETQUA.MaHK = HO" +
+                "CKY.MaHK\r\nWHERE KETQUA.MaSV = @MaSV AND HocKY.TenHK = @TenHK";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaSV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenHK", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "TenHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12675,13 +12581,13 @@ SELECT MaKQ, MaSV, MaHK, SoTinChiDat, DiemTB, XepLoai, TrangThai FROM KETQUA WHE
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT * \nFROM KETQUA\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\'";
+            this._commandCollection[4].CommandText = "SELECT * \r\nFROM KETQUA\r\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\'";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT *\nFROM KETQUA\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\' AND M" +
-                "aHK = @MaHK";
+            this._commandCollection[5].CommandText = "SELECT *\r\nFROM KETQUA\r\nWHERE LOWER(RTRIM(MaSV)) LIKE \'%\' + LOWER(@MaSV) + \'%\' AND" +
+                " MaHK = @MaHK";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSV", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHK", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaHK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -13335,9 +13241,9 @@ SELECT MaKQ, MaSV, MaHK, SoTinChiDat, DiemTB, XepLoai, TrangThai FROM KETQUA WHE
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[LOP] ([MaLop], [TenLop], [KhoaHoc], [SiSo], [MaBM], [MaKhoa], " +
-                "[MaGV]) VALUES (@MaLop, @TenLop, @KhoaHoc, @SiSo, @MaBM, @MaKhoa, @MaGV);\nSELECT" +
-                " MaLop, TenLop, KhoaHoc, SiSo, MaBM, MaKhoa, MaGV FROM LOP WHERE (MaLop = @MaLop" +
-                ")";
+                "[MaGV]) VALUES (@MaLop, @TenLop, @KhoaHoc, @SiSo, @MaBM, @MaKhoa, @MaGV);\r\nSELEC" +
+                "T MaLop, TenLop, KhoaHoc, SiSo, MaBM, MaKhoa, MaGV FROM LOP WHERE (MaLop = @MaLo" +
+                "p)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaLop", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenLop", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenLop", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -13389,8 +13295,8 @@ SELECT MaLop, TenLop, KhoaHoc, SiSo, MaBM, MaKhoa, MaGV FROM LOP WHERE (MaLop = 
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT LOP.*\n\nFROM LOP\nINNER JOIN GIANGVIEN ON LOP.MaGV = GIANGVIEN.MaGV\nWHERE LO" +
-                "P.MaGV = @MaGV";
+            this._commandCollection[1].CommandText = "SELECT LOP.*\r\n\r\nFROM LOP\r\nINNER JOIN GIANGVIEN ON LOP.MaGV = GIANGVIEN.MaGV\r\nWHER" +
+                "E LOP.MaGV = @MaGV";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaGV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaGV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -13400,14 +13306,14 @@ SELECT MaLop, TenLop, KhoaHoc, SiSo, MaBM, MaKhoa, MaGV FROM LOP WHERE (MaLop = 
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT * \nFROM LOP WHERE MaKhoa = @MaKhoa AND LOWER(RTRIM(MaLop)) LIKE \'%\' + LOWE" +
-                "R(@MaLop) + \'%\'";
+            this._commandCollection[3].CommandText = "SELECT * \r\nFROM LOP WHERE MaKhoa = @MaKhoa AND LOWER(RTRIM(MaLop)) LIKE \'%\' + LOW" +
+                "ER(@MaLop) + \'%\'";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhoa", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhoa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT * \nFROM LOP WHERE LOWER(RTRIM(MaLop)) LIKE \'%\' + LOWER(@MaLop) + \'%\'";
+            this._commandCollection[4].CommandText = "SELECT * \r\nFROM LOP WHERE LOWER(RTRIM(MaLop)) LIKE \'%\' + LOWER(@MaLop) + \'%\'";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaLop", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

@@ -54,6 +54,7 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.lblChucVu = new System.Windows.Forms.Label();
             this.picAvatar = new System.Windows.Forms.PictureBox();
+            this.báoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnusMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
@@ -204,7 +205,8 @@
             // 
             this.mnuTraCuu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTCDiem,
-            this.mnuTCKQ});
+            this.mnuTCKQ,
+            this.báoCáoToolStripMenuItem});
             this.mnuTraCuu.Name = "mnuTraCuu";
             this.mnuTraCuu.Size = new System.Drawing.Size(82, 25);
             this.mnuTraCuu.Text = "Tra Cứu";
@@ -212,14 +214,14 @@
             // mnuTCDiem
             // 
             this.mnuTCDiem.Name = "mnuTCDiem";
-            this.mnuTCDiem.Size = new System.Drawing.Size(156, 26);
+            this.mnuTCDiem.Size = new System.Drawing.Size(224, 26);
             this.mnuTCDiem.Text = "Điểm";
             this.mnuTCDiem.Click += new System.EventHandler(this.điểmToolStripMenuItem_Click_1);
             // 
             // mnuTCKQ
             // 
             this.mnuTCKQ.Name = "mnuTCKQ";
-            this.mnuTCKQ.Size = new System.Drawing.Size(156, 26);
+            this.mnuTCKQ.Size = new System.Drawing.Size(224, 26);
             this.mnuTCKQ.Text = "Kết Quả";
             this.mnuTCKQ.Click += new System.EventHandler(this.kếtQủaToolStripMenuItem_Click);
             // 
@@ -276,6 +278,13 @@
             this.picAvatar.TabIndex = 5;
             this.picAvatar.TabStop = false;
             // 
+            // báoCáoToolStripMenuItem
+            // 
+            this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.báoCáoToolStripMenuItem.Text = "Báo Cáo";
+            this.báoCáoToolStripMenuItem.Click += new System.EventHandler(this.báoCáoToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -326,5 +335,6 @@
         private System.Windows.Forms.Label lblChucVu;
         private System.Windows.Forms.PictureBox picAvatar;
         private System.Windows.Forms.ToolStripMenuItem mnuHome;
+        private System.Windows.Forms.ToolStripMenuItem báoCáoToolStripMenuItem;
     }
 }

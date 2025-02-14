@@ -39,7 +39,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvDiem = new System.Windows.Forms.DataGridView();
-            this.MaDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaHK = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,19 +62,18 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtDiemGiuaKy = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtMaHK = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtMaMH = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtMaSV = new System.Windows.Forms.TextBox();
-            this.txtMaDiem = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.diemTableAdapter = new AZJ.QLSVDataSetTableAdapters.DIEMTableAdapter();
             this.monhocTableAdapter = new AZJ.QLSVDataSetTableAdapters.MONHOCTableAdapter();
             this.hockyTableAdapter = new AZJ.QLSVDataSetTableAdapters.HOCKYTableAdapter();
             this.lopTableAdapter = new AZJ.QLSVDataSetTableAdapters.LOPTableAdapter();
+            this.cboMonHoc = new System.Windows.Forms.ComboBox();
+            this.cboHocKy = new System.Windows.Forms.ComboBox();
+            this.sinhvienTableAdapter = new AZJ.QLSVDataSetTableAdapters.SINHVIENTableAdapter();
             this.gboFillter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diemBindingSource)).BeginInit();
@@ -162,7 +160,6 @@
             this.dgvDiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaDiem,
             this.MaSV,
             this.MaMH,
             this.MaHK,
@@ -201,14 +198,6 @@
             this.dgvDiem.Size = new System.Drawing.Size(983, 288);
             this.dgvDiem.TabIndex = 116;
             this.dgvDiem.SelectionChanged += new System.EventHandler(this.dgvDiem_SelectionChanged);
-            // 
-            // MaDiem
-            // 
-            this.MaDiem.DataPropertyName = "MaDiem";
-            this.MaDiem.HeaderText = "MaDiem";
-            this.MaDiem.MinimumWidth = 6;
-            this.MaDiem.Name = "MaDiem";
-            this.MaDiem.ReadOnly = true;
             // 
             // MaSV
             // 
@@ -422,79 +411,42 @@
             this.label11.TabIndex = 127;
             this.label11.Text = "Điểm Giữa Kỳ";
             // 
-            // txtMaHK
-            // 
-            this.txtMaHK.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaHK.Location = new System.Drawing.Point(206, 619);
-            this.txtMaHK.Name = "txtMaHK";
-            this.txtMaHK.Size = new System.Drawing.Size(240, 26);
-            this.txtMaHK.TabIndex = 126;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(203, 599);
+            this.label6.Location = new System.Drawing.Point(203, 543);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 18);
+            this.label6.Size = new System.Drawing.Size(52, 18);
             this.label6.TabIndex = 125;
-            this.label6.Text = "Mã Học Kỳ";
-            // 
-            // txtMaMH
-            // 
-            this.txtMaMH.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaMH.Location = new System.Drawing.Point(206, 564);
-            this.txtMaMH.Name = "txtMaMH";
-            this.txtMaMH.Size = new System.Drawing.Size(240, 26);
-            this.txtMaMH.TabIndex = 124;
+            this.label6.Text = "Học Kỳ";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(203, 544);
+            this.label7.Location = new System.Drawing.Point(203, 491);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 18);
+            this.label7.Size = new System.Drawing.Size(62, 18);
             this.label7.TabIndex = 123;
-            this.label7.Text = "Mã Môn Học";
+            this.label7.Text = "Môn Học";
             // 
             // txtMaSV
             // 
             this.txtMaSV.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaSV.Location = new System.Drawing.Point(206, 512);
+            this.txtMaSV.Location = new System.Drawing.Point(206, 458);
             this.txtMaSV.Name = "txtMaSV";
             this.txtMaSV.Size = new System.Drawing.Size(240, 26);
             this.txtMaSV.TabIndex = 122;
-            // 
-            // txtMaDiem
-            // 
-            this.txtMaDiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaDiem.Enabled = false;
-            this.txtMaDiem.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaDiem.Location = new System.Drawing.Point(206, 458);
-            this.txtMaDiem.Name = "txtMaDiem";
-            this.txtMaDiem.Size = new System.Drawing.Size(240, 26);
-            this.txtMaDiem.TabIndex = 120;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 438);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 18);
-            this.label1.TabIndex = 119;
-            this.label1.Text = "Mã Điểm";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(203, 492);
+            this.label5.Location = new System.Drawing.Point(203, 438);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 18);
             this.label5.TabIndex = 121;
@@ -528,11 +480,37 @@
             // 
             this.lopTableAdapter.ClearBeforeFill = true;
             // 
+            // cboMonHoc
+            // 
+            this.cboMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMonHoc.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMonHoc.FormattingEnabled = true;
+            this.cboMonHoc.Location = new System.Drawing.Point(206, 512);
+            this.cboMonHoc.Name = "cboMonHoc";
+            this.cboMonHoc.Size = new System.Drawing.Size(240, 26);
+            this.cboMonHoc.TabIndex = 147;
+            // 
+            // cboHocKy
+            // 
+            this.cboHocKy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHocKy.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboHocKy.FormattingEnabled = true;
+            this.cboHocKy.Location = new System.Drawing.Point(206, 567);
+            this.cboHocKy.Name = "cboHocKy";
+            this.cboHocKy.Size = new System.Drawing.Size(240, 26);
+            this.cboHocKy.TabIndex = 148;
+            // 
+            // sinhvienTableAdapter
+            // 
+            this.sinhvienTableAdapter.ClearBeforeFill = true;
+            // 
             // frmDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 685);
+            this.Controls.Add(this.cboHocKy);
+            this.Controls.Add(this.cboMonHoc);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnHuy);
@@ -547,13 +525,9 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtDiemGiuaKy);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtMaHK);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtMaMH);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtMaSV);
-            this.Controls.Add(this.txtMaDiem);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.gboFillter);
             this.Controls.Add(this.pictureBox1);
@@ -596,18 +570,14 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtDiemGiuaKy;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtMaHK;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtMaMH;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtMaSV;
-        private System.Windows.Forms.TextBox txtMaDiem;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private QLSVDataSetTableAdapters.MONHOCTableAdapter monhocTableAdapter;
         private System.Windows.Forms.BindingSource diemBindingSource;
         private QLSVDataSetTableAdapters.HOCKYTableAdapter hockyTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaDiem;
+        private QLSVDataSetTableAdapters.LOPTableAdapter lopTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSV;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaMH;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHK;
@@ -615,6 +585,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemCuoiKy;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemTongKet;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
-        private QLSVDataSetTableAdapters.LOPTableAdapter lopTableAdapter;
+        private System.Windows.Forms.ComboBox cboMonHoc;
+        private System.Windows.Forms.ComboBox cboHocKy;
+        private QLSVDataSetTableAdapters.SINHVIENTableAdapter sinhvienTableAdapter;
     }
 }

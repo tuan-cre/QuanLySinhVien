@@ -55,7 +55,7 @@ namespace AZJ
             else
             {
                 OpenFormInPanel(new frmHome());
-                mnuTraCuu.Visible = false;
+                //mnuTraCuu.Visible = false;
                 lblChucVu.Text = "Quản Trị Viên";
                 picAvatar.Image = Properties.Resources.admava;
             }
@@ -182,6 +182,11 @@ namespace AZJ
         private void mnuVeChungToi_Click(object sender, EventArgs e)
         {
             OpenFormInPanel(new frmAbout());
+        }
+
+        private void báoCáoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFormInPanel(new frmBaoCao());
         }
     }
 }
